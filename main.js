@@ -10,7 +10,7 @@ render();
 
 function init() {
 	container = document.createElement("div");
-	container.style = "width: 100%; height: 100%; display: inline-flex"
+	container.style = "width: 100%; height: 100%; display: inline-flex";
 	document.body.appendChild(container);
 
 	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -27,7 +27,7 @@ function init() {
 	scene.add(dirLight);
 
 	const loader = new GLTFLoader();
-	loader.load("./map.glb", function (gltf) {
+	loader.load("../map.glb", function (gltf) {
 		scene.add(gltf.scene);
 		render();
 	});

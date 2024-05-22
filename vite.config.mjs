@@ -7,12 +7,17 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        home: resolve(__dirname, 'home.html'),
         language: resolve(__dirname, 'language.html'),
-        schedule: resolve(__dirname, 'schedule.html'),
-        navigation: resolve(__dirname, 'navigation.html'),
-        campus_map: resolve(__dirname, 'campus_map.html'),
-        schedule_setting: resolve(__dirname, 'schedule_setting.html')
+        home: resolve(__dirname, 'ko/home.html'),
+        schedule: resolve(__dirname, 'ko/schedule.html'),
+        navigation: resolve(__dirname, 'ko/navigation.html'),
+        campus_map: resolve(__dirname, 'ko/campus_map.html'),
+        schedule_setting: resolve(__dirname, 'ko/schedule_setting.html'),
+        home_en: resolve(__dirname, 'en/home.html'),
+        schedule_en: resolve(__dirname, 'en/schedule.html'),
+        navigation_en: resolve(__dirname, 'en/navigation.html'),
+        campus_map_en: resolve(__dirname, 'en/campus_map.html'),
+        schedule_setting_en: resolve(__dirname, 'en/schedule_setting.html')
       }
     }
   }
