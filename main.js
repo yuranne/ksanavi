@@ -34,10 +34,10 @@ function init() {
 	});
 
 	const pointsArray = [
-            [0, 0, 0],
-            [0, 20, 0],
-            [20, 20, 20],
-            [20, 0, 20]
+            [0, 1.5, 0],
+            [20, 1.5, 0],
+            [20, 3, 20],
+            [0, 3, 20]
         ];
         addRedLineFromPoints(scene, pointsArray);
 
