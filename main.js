@@ -12,7 +12,8 @@ function init() {
 	container = document.getElementById('map-3d');
 
 	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-	camera.position.set(100, 60, 100);
+	// camera.position.set(100, 60, 100);
+	camera.position.set(0, 90, 0);
 
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color(0xf6eedc);
@@ -26,6 +27,7 @@ function init() {
 
 	const loader = new GLTFLoader();
 	loader.load("../map.glb", function (gltf) {
+		gltf.scene.rotation.y = -0.6
 		scene.add(gltf.scene);
 		render();
 	});
