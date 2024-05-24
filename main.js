@@ -11,7 +11,7 @@ render();
 function init() {
 	container = document.getElementById('map-3d');
 
-	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 500);
+	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 	// camera.position.set(100, 60, 100);
 	camera.position.set(0, 90, 0);
 
@@ -30,7 +30,6 @@ function init() {
 	loader.load("../map.glb", function (gltf) {
 		//gltf.scene.rotation.y = -0.6
 		scene.add(gltf.scene);
-		render();
 	});
 
 	//출발지부터 도착지의 점 리스트 입력
