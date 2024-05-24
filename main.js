@@ -9,9 +9,7 @@ init();
 render();
 
 function init() {
-	container = document.createElement("div");
-	container.style = "width: 100%; height: 50%; display: inline-flex";
-	document.body.appendChild(container);
+	container = document.getElementById('map-3d');
 
 	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 	camera.position.set(100, 60, 100);
