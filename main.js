@@ -25,30 +25,23 @@ function init() {
 	dirLight.position.set(10, 10, 10);
 	scene.add(dirLight);
 
-	// 점들의 리스트 정의
-        const points = [
-            new THREE.Vector3(1, 2, 3),
-            new THREE.Vector3(4, 5, 6),
-            new THREE.Vector3(7, 8, 9),
-            new THREE.Vector3(10, 11, 12)
-        ];
-
-        // 선 색깔 설정
-        const material = new THREE.LineBasicMaterial({ color: 0xff0000 }); // 붉은색
-
-        // 점들을 순서대로 이은 mesh 생성
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.Line(geometry, material);
-
-        // 씬에 선 추가
-        scene.add(line);
-
+	
 	const loader = new GLTFLoader();
 	loader.load("../map.glb", function (gltf) {
 		gltf.scene.rotation.y = -0.6
 		scene.add(gltf.scene);
 		render();
 	});
+
+	const pointsArray = [
+            [11, 2, 3],
+            [4, 15, 6],
+            [7, 8, 19],
+            [10, 11, 12]
+        ];
+        addRedLineFromPoints(scene, pointsArray);
+
+
 
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -62,6 +55,16 @@ function init() {
 
 	window.addEventListener("resize", onWindowResize);
 }
+
+function addRedLineFromPoints(scene, pointsArray) {
+            const material = new THREE.LineBasicMaterial({ color: 0xff0000 }); // 붉은색
+            const points = pointsArray.map(point => new THREE.Vector3(...point));
+
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(geometry, material);
+
+            scene.add(line);
+        }
 
 function onWindowResize() {
 	camera.aspect = container.clientWidth / container.clientHeight;
