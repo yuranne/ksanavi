@@ -66,6 +66,7 @@ function addRedLineFromPoints(scene, pointsArray) {
             const line = new THREE.Line(geometry, material);
 
             scene.add(line);
+	    render();
         }
 
 function onWindowResize() {
