@@ -30,7 +30,9 @@ function init() {
 	loader.load("../map.glb", function (gltf) {
 		//gltf.scene.rotation.y = -0.6
 		scene.add(gltf.scene);
+		render();
 	});
+
 
 	//출발지부터 도착지의 점 리스트 입력
 	//예시
@@ -65,7 +67,6 @@ function addRedLineFromPoints(scene, pointsArray) {
             const line = new THREE.Line(geometry, material);
 
             scene.add(line);
-	    render();
         }
 
 function onWindowResize() {
