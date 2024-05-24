@@ -11,7 +11,7 @@ render();
 function init() {
 	container = document.getElementById('map-3d');
 
-	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+	camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 500);
 	// camera.position.set(100, 60, 100);
 	camera.position.set(0, 90, 0);
 
