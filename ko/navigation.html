@@ -13,7 +13,7 @@
 			#toast_message.active { opacity: 100%; bottom: 50px; }
 		</style>
 	</head>
-	<body style="height: 100%; display: flex; flex-direction: column">
+	<body style="height: 100%; display: flex; flex-direction: column" onload="javascript:navigateByParam()">
 		<div class="Header" style="width: 100%; height: 46px; background: #4B7DAB; flex-direction: column; align-items: center; display: flex">
 			<img class="Menu" style="left: 6px; top: 10px; position: absolute; cursor: pointer" src="../img/menu.png" onclick="javascript:document.getElementById('sidebar').style.visibility='visible'" />
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
@@ -28,7 +28,7 @@
 				</div>
 				<div class="Rectangle" id="sel_dept" style="left: 18px; right: 50px; top: 102px; position: absolute; background: #D5E4F2; border-top-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 3; visibility: hidden">
 					<div class="list-item" onclick="javascript:selectLocationByMap(this, 'dept_default', marker_dept)">지도에서 선택</div>
-					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dept_default', marker_dept)">현위치</div>
+					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dept_default', marker_dept)" id="dept_curr">현위치</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">본관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">탐구관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">형설관</div>
@@ -95,6 +95,7 @@
 				var map = new kakao.maps.Map(container, options);
 				var geocoder = new kakao.maps.services.Geocoder();
 				var polylinePath;
+				var gotCurrPos;
 
 				var marker;
 				var marker_curr = new kakao.maps.Marker();
@@ -111,7 +112,7 @@
 
 				function selectLocation(selected, def_txt) {
 					var def_txt_elm = document.getElementById(def_txt);
-					def_txt_elm.innerText = selected.innerText;
+					def_txt_elm.innerText = selected.textContent;
 					def_txt_elm.className = 'SelectedText';
 					selected.parentElement.style.visibility = 'hidden';
 					if (polylinePath != undefined)
@@ -131,6 +132,7 @@
 					navigator.geolocation.getCurrentPosition((pos) => {
 						// mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude));
 						mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
+						gotCurrPos = true;
 					})
 				}
 
@@ -196,6 +198,26 @@
 					setTimeout(function(){
 						toastMessage.classList.remove('active');
 					}, ms);
+				}
+
+				function navigateByParam() {
+					var dest = new URL(location.href).searchParams.get('dest');
+					if (dest) {
+						selectCurrentLocation(document.getElementById('dept_curr'), 'dept_default', marker_dept);
+						for (elm of document.getElementById('sel_dest').children) {
+							if (elm.textContent == dest) {
+								selectLocationByName(elm, 'dest_default', marker_dest);
+								break;
+							}
+						}
+						function checkFlag() {
+							if(!gotCurrPos)
+								window.setTimeout(checkFlag, 100);
+							else
+								navigate();
+						}
+						checkFlag();
+					}
 				}
 			</script>
 			<div id="map-3d" style="width: 100%; height: 50%"></div>
