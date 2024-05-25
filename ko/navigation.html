@@ -185,7 +185,8 @@
 					}); 
 					polylinePath.setMap(map);
 					var distance = Math.round(polylinePath.getLength());
-					toast('소요시간\n도보: ' + distance + '초', 5000);
+					var walkkTime = distance / 1.04 | 0;
+					toast('거리: ' + distance + 'm\n도보: ' + walkkTime + '초', 5000);
 				}
 
 				function toast(msg, ms){
