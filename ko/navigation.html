@@ -105,8 +105,8 @@
 				marker_dest.setMap(map);
 
 				function markCurrentLocation(pos) {
-					// marker_curr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude));
-					marker_curr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
+					marker_curr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+					// marker_curr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 					marker_curr.setMap(map);
 				}
 
@@ -130,8 +130,8 @@
 					selectLocation(selected, def_txt);
 
 					navigator.geolocation.getCurrentPosition((pos) => {
-						// mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude));
-						mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
+						mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+						// mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 						gotCurrPos = true;
 					})
 				}
