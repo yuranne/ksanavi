@@ -6,6 +6,11 @@
 		<title>KSANAVI - 길찾기</title>
 		<style>
 			body { margin: 0; }
+			.DefaultText { width: 185px; height: 27px; left: 26px; position: absolute; color: rgba(255, 255, 255, 0.50); font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word; }
+			.SelectedText { width: 185px; height: 27px; left: 26px; position: absolute; color: #547088; font-size: 16px; font-family: Poppins; font-weight: 650; word-wrap: break-word; }
+			.list-item { padding-left: 8px; padding-top: 4px; padding-bottom: 4px; color: #6C8EAC; cursor: pointer; }
+			#toast_message { opacity: 0; position: fixed; bottom: -100px; left: 50%; transform: translate(-50%,0); padding: 10px 50px; background: #4B7DAB; border-radius: 100px; color: #FFFFFF; box-shadow: 3px 4px 11px 0px #00000040; transition: all 0.5s; }
+			#toast_message.active { opacity: 100%; bottom: 50px; }
 		</style>
 	</head>
 	<body style="height: 100%; display: flex; flex-direction: column">
@@ -14,15 +19,51 @@
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
 			<img class="Home" style="right: 10px; top: 7px; position: absolute; cursor: pointer" src="../img/home.png" onclick="location.href='home.html'"/>
 		</div>
-		<div style="width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: center; display: flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
-			<div style="width: 100%; height: 113px">
-				<div class="StartEnd" style="width: 100%; height: 113px; position: relative; background: #4B7DAB"></div>
-				<div class="Rectangle" style="height: 35px; left: 18px; right: 50px; top: 65px; position: absolute; background: #87B2D9; border-top-left-radius: 5px; border-top-right-radius: 5px"></div>
-				<div class="Rectangle" style="height: 35px; left: 18px; right: 50px; top: 102px; position: absolute; background: #87B2D9; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px"></div>
-				<img class="Exchange" style="right: 19px; top: 72px; position: absolute" src="../img/exchange.png" />
-				<img class="ArrowWhite" style="right: 18px; top: 108px; position: absolute" src="../img/search.png" />
-				<div style="width: 185px; height: 27px; left: 26px; top: 71px; position: absolute; color: rgba(255, 255, 255, 0.50); font-size: 16px; font-family: Poppins; font-weight: 600; word-wrap: break-word">현위치 입력</div>
-				<div style="width: 185px; height: 27px; left: 26px; top: 107px; position: absolute; color: rgba(255, 255, 255, 0.50); font-size: 16px; font-family: Poppins; font-weight: 600; word-wrap: break-word">도착지 입력</div>
+		<div style="width: 100%; height: 100%; flex-direction: column; display: flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
+			<div style="width: 100%; background: #4B7DAB">
+				<div style="height: 113px"></div>
+				<div style="cursor: pointer" onclick="javascript:document.getElementById('sel_dest').style.visibility='hidden'; document.getElementById('sel_dept').style.visibility='visible'">
+					<div class="Rectangle" style="height: 35px; left: 18px; right: 50px; top: 65px; position: absolute; background: #87B2D9; border-top-left-radius: 5px; border-top-right-radius: 5px"></div>
+					<div class="DefaultText" id="dept_default" style="top: 71px">출발지 입력</div>
+				</div>
+				<div class="Rectangle" id="sel_dept" style="left: 18px; right: 50px; top: 102px; position: absolute; background: #D5E4F2; border-top-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 3; visibility: hidden">
+					<div class="list-item" onclick="javascript:selectLocationByMap(this, 'dept_default', marker_dept)">지도에서 선택</div>
+					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dept_default', marker_dept)">현위치</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">본관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">탐구관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">형설관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">창조관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">예지관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">DDC</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">견우관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">직녀관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">백양관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">운동장</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">노벨공원</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">아크로폴리스</div>
+				</div>
+				<div style="cursor: pointer" onclick="javascript:document.getElementById('sel_dest').style.visibility='visible'">
+					<div class="Rectangle" style="height: 35px; left: 18px; right: 50px; top: 102px; position: absolute; background: #87B2D9; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px"></div>
+					<div class="DefaultText" id="dest_default" style="top: 107px">도착지 입력</div>
+				</div>
+				<div class="Rectangle" id="sel_dest" style="left: 18px; right: 50px; top: 139px; position: absolute; background: #D5E4F2; border-top-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 3; visibility: hidden">
+					<div class="list-item" onclick="javascript:selectLocationByMap(this, 'dest_default', marker_dest)">지도에서 선택</div>
+					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dest_default', marker_dest)">현위치</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">본관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">탐구관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">형설관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">창조관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">예지관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">DDC</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">견우관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">직녀관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">백양관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">운동장</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">노벨공원</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">아크로폴리스</div>
+				</div>
+				<img class="Exchange" style="right: 19px; top: 72px; position: absolute; cursor: pointer" src="../img/exchange.png" onclick="javascript:exchangeDeptDest()" />
+				<img class="ArrowWhite" style="right: 18px; top: 108px; position: absolute; cursor: pointer" src="../img/search.png" onclick="javascript:navigate()" />
 			</div>
 			<div id="map" style="width: 100%; height: 50%">
 				<div class="Here" style="width: 82px; height: 25px; left: 11px; top: 9px; position: absolute; z-index: 2; cursor: pointer" onclick="javascript:navigator.geolocation.getCurrentPosition((pos) => { markCurrentLocation(pos) })">
@@ -30,20 +71,125 @@
 					<div style="width: 50px; height: 25px; left: 32px; position: absolute; color: black; font-size: 16px; font-family: Poppins; font-weight: 600; word-wrap: break-word">현위치</div>
 				</div>
 			</div>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de71144a2ac56fdf95a97e149aa7e203"></script>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de71144a2ac56fdf95a97e149aa7e203&libraries=services"></script>
 			<script>
+				var ksaLatLng = {
+					본관: new kakao.maps.LatLng(35.16594322284734, 129.02596184758775),
+					탐구관: new kakao.maps.LatLng(35.165308342898946, 129.0258006889412),
+					형설관: new kakao.maps.LatLng(35.16509972996156, 129.02561169769783),
+					창조관: new kakao.maps.LatLng(35.165649884267275, 129.02504645784612),
+					예지관: new kakao.maps.LatLng(35.16592559703981, 129.02688049919817),
+					DDC: new kakao.maps.LatLng(35.165233809319815, 129.026215855847),
+					견우관: new kakao.maps.LatLng(35.1660756149182, 129.02545483121995),
+					직녀관: new kakao.maps.LatLng(35.16627147808139, 129.0250591296194),
+					백양관: new kakao.maps.LatLng(35.16653078664572, 129.02531522540062),
+					운동장: new kakao.maps.LatLng(35.166320330804304, 129.02658301843573),
+					노벨공원: new kakao.maps.LatLng(35.16492834545107, 129.0254867316951),
+					아크로폴리스: new kakao.maps.LatLng(35.165535938644645, 129.02606697116047),
+				}
 				var container = document.getElementById('map');
 				var options = {
 					center: new kakao.maps.LatLng(35.16592065712491, 129.02596403126353),
 					level: 2
 				};
 				var map = new kakao.maps.Map(container, options);
+				var geocoder = new kakao.maps.services.Geocoder();
 
-				var marker_cur = new kakao.maps.Marker();
+				var marker;
+				var marker_curr = new kakao.maps.Marker();
+				var marker_dept = new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/marker_dept.png", new kakao.maps.Size(50, 45), { offset: new kakao.maps.Point(15, 43) }) });
+				var marker_dest = new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/marker_dest.png", new kakao.maps.Size(50, 45), { offset: new kakao.maps.Point(15, 43) }) });
+				marker_dept.setMap(map);
+				marker_dest.setMap(map);
+
 				function markCurrentLocation(pos) {
-					// marker_cur.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude))
-					marker_cur.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987))
-					marker_cur.setMap(map);
+					// marker_curr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude));
+					marker_curr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
+					marker_curr.setMap(map);
+				}
+
+				function selectLocation(selected, def_txt) {
+					var def_txt_elm = document.getElementById(def_txt);
+					def_txt_elm.innerText = selected.innerText;
+					def_txt_elm.className = 'SelectedText';
+					selected.parentElement.style.visibility = 'hidden';
+
+					return def_txt_elm;
+				}
+
+				function selectLocationByMap(selected, def_txt, mkr) {
+					selectLocation(selected, def_txt);
+					marker = mkr;
+				}
+
+				function selectCurrentLocation(selected, def_txt, mkr) {
+					selectLocation(selected, def_txt);
+
+					navigator.geolocation.getCurrentPosition((pos) => {
+						// mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, position.coords.longitude));
+						mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
+					})
+				}
+
+				function selectLocationByName(selected, def_txt, mkr) {
+					var def_txt_elm = selectLocation(selected, def_txt);
+					mkr.setPosition(ksaLatLng[def_txt_elm.innerText]);
+				}
+
+				kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+					if (marker != undefined) {
+						marker.setPosition(mouseEvent.latLng);
+						geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), function(result, status) {
+							if (status === kakao.maps.services.Status.OK) {
+								var detailAddr = !!result[0].road_address ? result[0].road_address.address_name.replace('부산광역시 부산진구 ', '') : '지도 선택 위치';
+								console.log(marker);
+								console.log(marker_dept);
+								console.log(marker_dest);
+								if (marker == marker_dept)
+									document.getElementById('dept_default').innerText = detailAddr;
+								else if (marker == marker_dest)
+									document.getElementById('dest_default').innerText = detailAddr;
+							}
+							marker = undefined;
+						});
+					}
+				});
+
+				function exchangeDeptDest() {
+					var dept_txt_elm = document.getElementById('dept_default');
+					var dest_txt_elm = document.getElementById('dest_default');
+
+					if (dept_txt_elm.className == 'SelectedText' && dest_txt_elm.className == 'SelectedText') {
+						var tmp = dept_txt_elm.innerText;
+						dept_txt_elm.innerText = dest_txt_elm.innerText;
+						dest_txt_elm.innerText = tmp;
+						tmp = marker_dept.getPosition();
+						marker_dept.setPosition(marker_dest.getPosition());
+						marker_dest.setPosition(tmp);
+					} else {
+						toast('출발지와 목적지를 모두 설정해 주세요!');
+					}
+				}
+
+				function navigate() {
+					const linePath = [marker_dept.getPosition(), marker_dest.getPosition()];
+					var polyline = new kakao.maps.Polyline({
+						path: linePath,
+						strokeWeight: 5,
+						strokeColor: '#0000FF',
+						strokeOpacity: 0.7,
+						strokeStyle: 'solid'
+					}); 
+					polyline.setMap(map);
+				}
+
+				function toast(msg){
+					var toastMessage = document.getElementById('toast_message');
+					toastMessage.innerText = msg;
+					toastMessage.classList.add('active');
+					setTimeout(function(){
+						toastMessage.classList.remove('active');
+					}, 1000);
 				}
 			</script>
 			<div id="map-3d" style="width: 100%; height: 50%"></div>
@@ -59,5 +205,6 @@
 				<div class="Lang" style="width: 112px; height: 23px; left: 44px; top: 4px; position: absolute; color: #003458; font-size: 16px; font-family: Poppins; font-weight: bold; word-wrap: break-word">language</div>
 			</div>
 		</div>
+		<div id="toast_message"></div>
 	</body>
 </html>
