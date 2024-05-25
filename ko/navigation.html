@@ -94,6 +94,7 @@
 				};
 				var map = new kakao.maps.Map(container, options);
 				var geocoder = new kakao.maps.services.Geocoder();
+				var polylinePath;
 
 				var marker;
 				var marker_curr = new kakao.maps.Marker();
@@ -113,6 +114,8 @@
 					def_txt_elm.innerText = selected.innerText;
 					def_txt_elm.className = 'SelectedText';
 					selected.parentElement.style.visibility = 'hidden';
+					if (polylinePath != undefined)
+						polylinePath.setMap(null);
 
 					return def_txt_elm;
 				}
@@ -167,29 +170,31 @@
 						marker_dept.setPosition(marker_dest.getPosition());
 						marker_dest.setPosition(tmp);
 					} else {
-						toast('출발지와 목적지를 모두 설정해 주세요!');
+						toast('출발지와 목적지를 모두 설정해 주세요!', 1500);
 					}
 				}
 
 				function navigate() {
 					const linePath = [marker_dept.getPosition(), marker_dest.getPosition()];
-					var polyline = new kakao.maps.Polyline({
+					polylinePath = new kakao.maps.Polyline({
 						path: linePath,
 						strokeWeight: 5,
 						strokeColor: '#0000FF',
 						strokeOpacity: 0.7,
 						strokeStyle: 'solid'
 					}); 
-					polyline.setMap(map);
+					polylinePath.setMap(map);
+					var distance = Math.round(polylinePath.getLength());
+					toast('소요시간\n도보: ' + distance + '초', 5000);
 				}
 
-				function toast(msg){
+				function toast(msg, ms){
 					var toastMessage = document.getElementById('toast_message');
 					toastMessage.innerText = msg;
 					toastMessage.classList.add('active');
 					setTimeout(function(){
 						toastMessage.classList.remove('active');
-					}, 1000);
+					}, ms);
 				}
 			</script>
 			<div id="map-3d" style="width: 100%; height: 50%"></div>
