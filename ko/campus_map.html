@@ -6,6 +6,8 @@
 		<title>KSANAVI - 캠퍼스 맵</title>
 		<style>
 			body { margin: 0; }
+			.Tab { color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word; display: flex; align-items: center; }
+			.TabItem { width: 90px; display: flex; justify-content: center }
 		</style>
 	</head>
 	<body style="height: 100%; display: flex; flex-direction: column">
@@ -18,28 +20,19 @@
 			<div style="height: 300px; top: 56px; position: absolute">
 				<img height="100%" src="../img/ksa_map.png">
 			</div>
-			<div class="Group" style="height: 30px; left: 10px; top: 366px; position: absolute">
-				<div class="Group" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute">
-					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #CAE8DE"></div>
-					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">본관</div>
-				</div>
-				<div class="Group" style="width: 90px; height: 30px; left: 90px; top: 0px; position: absolute">
-					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
-					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">탐구관</div>
-				</div>
-				<div class="Group" style="width: 90px; height: 30px; left: 180px; top: 0px; position: absolute">
-					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
-					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">형설관</div>
-				</div>
-				<div class="Group" style="width: 90px; height: 30px; left: 270px; top: 0px; position: absolute">
-					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
-					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">창조관</div>
-				</div>
-			</div>
-			<div class="Scrollbar" style="height: 15px; padding-top: 4px; padding-bottom: 3px; padding-left: 1px; padding-right: 1px; left: 10px; right: 10px; top: 400px; position: absolute; background: #FAFAFA; box-shadow: 0px -1px 0px #F0F0F0 inset; justify-content: flex-start; align-items: center; display: inline-flex">
-				<div class="Thumb" style="height: 8px; background: #C1C1C1; border-radius: 4px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-					<div class="Hspacer" style="color: #C1C1C1; font-size: 4px; font-family: Roboto; font-weight: 400; word-wrap: break-word">.. ....................</div>
-				</div>
+			<div style="height: 40px; left: 17px; right: 17px; top: 366px; position: absolute; overflow-x: scroll; display: flex">
+				<div class="Tab" style="background: #CAE8DE"><div class="TabItem">본관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">탐구관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">형설관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">창조관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">예지관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">DDC</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">견우관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">직녀관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">백양관</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">운동장</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">노벨공원</div></div>
+				<div class="Tab" style="background: #F0F0F0"><div class="TabItem">아크로폴리스</div></div>
 			</div>
 			<div style="width: 88px; height: 22px; left: 23px; top: 425px; position: absolute; color: black; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word">본관</div>
 			<div class="Rectangle" style="height: 212px; left: 17px; right: 17px; top: 459px; position: absolute; background: #D9D9D9"></div>
