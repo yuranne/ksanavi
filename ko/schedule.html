@@ -85,30 +85,9 @@
 			function navigate(elm) {
 				location.href = "navigation.html?dest=" + elm.lastElementChild.innerText.replace(/ .*/,'');
 			}
-
-			function getCookie(name) {
-				let matches = document.cookie.match(new RegExp(
-					"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-				));
-				return matches ? decodeURIComponent(matches[1]) : undefined;
-			}
-
-			function checkCookie() {
-				SorT = getCookie("st");
-
-				if (SorT == "T")
-					setVisibility('forOnlyT', 'forOnlyS');
-				else
-					setVisibility('forOnlyS', 'forOnlyT');
-
-				for (elm of document.getElementsByClassName('slot')) {
-					if (getCookie(elm.id) == 'Y')
-						elm.style.border = '2px solid rgba(255, 110, 5, 0.5)';
-				}
-			}
 		</script>
 	</head>
-	<body style="height: 100%; display: flex; flex-direction: column" onload="javascript:checkCookie()">
+	<body style="height: 100%; display: flex; flex-direction: column" onload="javascript:setVisibility('forOnlyS', 'forOnlyT')">
 		<div class="Header" style="width: 100%; height: 46px; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; align-items: center; display: flex">
 			<img class="Menu" style="left: 6px; top: 10px; position: absolute; cursor: pointer" src="../img/menu.png" onclick="javascript:document.getElementById('sidebar').style.visibility='visible'" />
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
@@ -149,70 +128,70 @@
 					</div>
 				</div>
 				<div class="subgrid-main-ui">
-					<div class="slot" id="A01" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>일정소개</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="A02">
+					<div class="slot">
 						<h3>캠퍼스 투어</h3>
 					</div>
-					<div class="slot" id="A03" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>개막식</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="A04" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>전문가 특강</h3>
 						<div class="details">
 							<span>창조관 중강당</span>
 						</div>
 					</div>
-					<div class="slot" id="A05" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>포스터 발표</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="A06" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>환영회</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="B01" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>구두 발표</h3>
 						<div class="details">
 							<span>형설관</span>
 						</div>
 					</div>
-					<div class="slot" id="B02" name="forOnlyS" onclick="javascript:navigate(this)">
+					<div class="slot" name="forOnlyS" onclick="javascript:navigate(this)">
 						<h3>주제탐구활동</h3>
 						<div class="details">
 							<span>DDC</span>
 						</div>
 					</div>
-					<div class="slot" id="B03" name="forOnlyT" onclick="javascript:navigate(this)">
+					<div class="slot" name="forOnlyT" onclick="javascript:navigate(this)">
 						<h3>교사 교류</h3>
 						<div class="details">
 							<span>창조관 중강당</span>
 						</div>
 					</div>
-					<div class="slot" id="B04" name="forOnlyT" onclick="javascript:navigate(this)">
+					<div class="slot" name="forOnlyT" onclick="javascript:navigate(this)">
 						<h3>KSA 포럼</h3>
 						<div class="details">
 							<span>창조관 중강당</span>
 						</div>
 					</div>
-					<div class="slot" id="B05" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>문화공연</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="C01">
+					<div class="slot">
 						<h3>체험 활동</h3>
 						<div class="details">
 							<span>- 부산근교 산업체 견학 및 투어</span>
@@ -223,41 +202,41 @@
 							<span>- KSASF 및 대덕연구단지 투어</span>
 						</div>
 					</div>
-					<div class="slot" id="C02" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>한국문화 특강</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="D01" name="forOnlyS" onclick="javascript:navigate(this)">
+					<div class="slot" name="forOnlyS" onclick="javascript:navigate(this)">
 						<h3>과학경연활동</h3>
 						<div class="details">
 							<span>DDC</span>
 						</div>
 					</div>
-					<div class="slot" id="D02" name="forOnlyT" onclick="javascript:navigate(this)">
+					<div class="slot" name="forOnlyT" onclick="javascript:navigate(this)">
 						<h3>Education Workshop</h3>
 						<div class="details">
 							<span>창조관 중강당</span>
 						</div>
 					</div>
-					<div class="slot" id="D03" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<!-- <h3>주제 탐구 활동 우수작 발표</h3> -->
 						<h3>우수작 발표</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="D04">
+					<div class="slot">
 						<h3>휴식</h3>
 					</div>
-					<div class="slot" id="D05" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>폐막식</h3>
 						<div class="details">
 							<span>본관 대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="D06" onclick="javascript:navigate(this)">
+					<div class="slot" onclick="javascript:navigate(this)">
 						<h3>환송회</h3>
 						<div class="details">
 							<span>본관 로비</span>

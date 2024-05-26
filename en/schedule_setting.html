@@ -3,252 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>KSANAVI - Schedule Setting</title>
+		<title>KSANAVI - 시간표 설정</title>
 		<style>
-			:root {
-				--main-bg: rgb(238, 238, 238); --stage-time-bg: rgba(217, 217, 217);
-				--blue-slot-bg: rgba(52, 129, 174, 0.3); --blue-slot-text: rgba(52, 129, 174, 1);
-				--green-slot-bg: rgba(49, 223, 118, 0.42); --green-slot-text: rgba(40, 188, 99, 1);
-				--red-slot-bg: rgba(223, 49, 49, 0.28); --red-slot-text: rgba(223, 49, 49, 0.75);
-				--yellow-slot-bg: rgba(255, 230, 0, 0.3); --yellow-slot-text: rgb(229, 168, 46);
-				--break-bg: rgba(83, 83, 83); --break-text: rgba(38, 38, 38, 1);
-				--break-time-highlight: rgba(255, 110, 5, 0.5);
-			}
-
-			* { margin: 0; padding: 0; box-sizing: border-box; }
-			html { font-size: 65%; }
-			body { height: 100%; background: var(--main-bg); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 1.6rem; line-height: 1.1; }
-
-			.main-container { min-height: 100vh; gap: 1rem; width: 80% }
-			.stages { display: flex; justify-content: space-between; align-items: center; }
-			.stage { padding: 2rem 1rem; margin-top: 20px; }
-			.stage, .time { background: var(--stage-time-bg); border-radius: 1rem; }
-			.details { display: flex; flex-direction: column; }
-			.button { width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 1rem; }
-
-			.slot { flex-direction: column; padding: 1rem; margin-top: 6px; }
-			[class^="slot"] { padding-left: 1rem; }
-			.slot, .break { border-radius: 1.5rem; display: flex; justify-content: center; }
-
-			.slot:nth-child(2), .slot:nth-child(3), .slot:nth-child(4), .slot:nth-child(5), .slot:nth-child(6), .slot:nth-child(7) { background: var(--blue-slot-bg); }
-			.slot:nth-child(2) h3, .slot:nth-child(3) h3, .slot:nth-child(4) h3, .slot:nth-child(5) h3, .slot:nth-child(6) h3, .slot:nth-child(7) h3 { color: var(--blue-slot-text); }
-
-			.slot:nth-child(9), .slot:nth-child(10), .slot:nth-child(11), .slot:nth-child(12), .slot:nth-child(13) { background: var(--green-slot-bg); }
-			.slot:nth-child(9) h3, .slot:nth-child(10) h3, .slot:nth-child(11) h3, .slot:nth-child(12) h3, .slot:nth-child(13) h3 { color: var(--green-slot-text); }
-
-			.slot:nth-of-type(15), .slot:nth-of-type(16) { background: var(--yellow-slot-bg); }
-			.slot:nth-of-type(15) h3, .slot:nth-of-type(16) h3 { color: var(--yellow-slot-text); }
-
-			.slot:nth-of-type(18), .slot:nth-of-type(19), .slot:nth-of-type(20), .slot:nth-of-type(21), .slot:nth-of-type(22), .slot:nth-of-type(23) { background: var(--red-slot-bg); }
-			.slot:nth-of-type(18) h3, .slot:nth-of-type(19) h3, .slot:nth-of-type(20) h3, .slot:nth-of-type(21) h3, .slot:nth-of-type(22) h3, .slot:nth-of-type(23) h3 { color: var(--red-slot-text); }
-
-			.time:nth-of-type(2), .time:nth-of-type(3), .time:nth-of-type(7), .time:nth-of-type(8), .time:nth-of-type(13), .time:nth-of-type(14) { background: rgba(255, 110, 5, 0.5); }
+			body { margin: 0; }
 		</style>
-		<script>
-			function setDisplay(v, h) {
-				document.getElementsByName(v).forEach((elm) => elm.style.display = 'block');
-				document.getElementsByName(h).forEach((elm) => elm.style.display = 'none');
-				document.getElementById(v).style = "border: 1px solid #4B7DAB; background: #CAE8DE";
-				document.getElementById(h).style = "border: 1px solid #003458; background: #F0F0F0";
-			}
-
-			function pick(elm) {
-				if (elm.style.border) {
-					elm.style.border = ''
-					document.cookie = elm.id + '=N; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-				} else {
-					elm.style.border = '5px solid red'
-					document.cookie = elm.id + '=Y; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-				}
-			}
-
-			function getCookie(name) {
-				let matches = document.cookie.match(new RegExp(
-					"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-				));
-				return matches ? decodeURIComponent(matches[1]) : undefined;
-			}
-
-			function checkCookie() {
-				SorT = getCookie("st");
-
-				if (SorT == "T")
-					setDisplay('forOnlyT', 'forOnlyS');
-				else
-					setDisplay('forOnlyS', 'forOnlyT');
-
-				for (elm of document.getElementsByClassName('slot')) {
-					if (getCookie(elm.id) == 'Y')
-						elm.style.border = '5px solid red';
-				}
-			}
-		</script>
 	</head>
-	<body style="height: 100%; display: flex; flex-direction: column" onload="javascript:checkCookie()">
-		<div class="Header" style="width: 100%; height: 46px; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; align-items: center; display: flex">
+	<body style="height: 100%; display: flex; flex-direction: column">
+		<div style="width: 100%; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
+			<div class="Header" style="width: 100%; height: 46px; position: relative; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)"></div>
 			<img class="Menu" style="left: 6px; top: 10px; position: absolute; cursor: pointer" src="../img/menu.png" onclick="javascript:document.getElementById('sidebar').style.visibility='visible'" />
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
 			<img class="Home" style="right: 10px; top: 7px; position: absolute; cursor: pointer" src="../img/home.png" onclick="location.href='home.html'"/>
 		</div>
-		<div style="width: 100%; height: 100%; justify-content: center; display: flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
-			<div style="width: 86%; top: 60px; position: absolute; display: flex; border: 1px solid #003458; background: #D5E4F2; border-radius: 0.5rem; padding: 2rem; font-size: 2rem; line-height: 1.5 ">
-				- Select Student or Teacher and it will auto-save.<br>
-				- Select the sessions you want to remember and they will be automatically saved and highlighted in orange in your timeline.
+		<div style="width: 100%; height: 100%; justify-content: center; display: inline-flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
+			<div class="File" style="width: 320px; height: 474px; top: 77px; position: absolute; border: 2px #D9D9D9 dotted; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+				<div class="Drag" style="text-align: center; position: relative">
+					<img src="../img/upload.png">
+					<div class="DragYourFileHere" style="color: #121212; font-size: 14px; font-family: Poppins; font-weight: 500; line-height: 16.80px; letter-spacing: 0.30px; word-wrap: break-word">Drag your file here</div>
+				</div>
 			</div>
-			<div style="top: 330px; position: absolute; display: flex">
-				<div class="button" id="forOnlyS" onclick="javascript:document.cookie = 'st=S; expires=Fri, 31 Dec 9999 23:59:59 GMT'; setDisplay('forOnlyS', 'forOnlyT')"><h2>Student</h2></div><div style="width: 5px"></div>
-				<div class="button" id="forOnlyT" onclick="javascript:document.cookie = 'st=T; expires=Fri, 31 Dec 9999 23:59:59 GMT'; javascript:setDisplay('forOnlyT', 'forOnlyS')"><h2>Teacher</h2></div>
-			</div>
-			<div class="main-container" style="top: 380px; position: absolute">
-				<div class="stages">
-					<div class="stage">6/26(화)</div>
-				</div>
-				<div class="slot" id="A01" onclick="javascript:pick(this)">
-					<h3>일정소개</h3>
-					<div class="details">
-						<span>9~10시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="slot" id="A02" onclick="javascript:pick(this)">
-					<h3>캠퍼스 투어</h3>
-					<div class="details">
-						<span>10~12시</span>
-					</div>
-				</div>
-				<div class="slot" id="A03" onclick="javascript:pick(this)">
-					<h3>개막식</h3>
-					<div class="details">
-						<span>14~15시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="slot" id="A04" onclick="javascript:pick(this)">
-					<h3>전문가 특강</h3>
-					<div class="details">
-						<span>15~16시</span>
-						<span>창조관 중강당</span>
-					</div>
-				</div>
-				<div class="slot" id="A05" onclick="javascript:pick(this)">
-					<h3>포스터 발표</h3>
-					<div class="details">
-						<span>16~18시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="slot" id="A06" onclick="javascript:pick(this)">
-					<h3>환영회</h3>
-					<div class="details">
-						<span>20~22시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="stages">
-					<div class="stage">6/27(수)</div>
-				</div>
-				<div class="slot" id="B01" onclick="javascript:pick(this)">
-					<h3>구두 발표</h3>
-					<div class="details">
-						<span>9~12시</span>
-						<span>형설관</span>
-					</div>
-				</div>
-				<div class="slot" id="B02" name="forOnlyS" onclick="javascript:pick(this)">
-					<h3>주제탐구활동</h3>
-					<div class="details">
-						<span>14~16시</span>
-						<span>DDC</span>
-					</div>
-				</div>
-				<div class="slot" id="B03" name="forOnlyT" onclick="javascript:pick(this)">
-					<h3>교사 교류</h3>
-					<div class="details">
-						<span>15~16시</span>
-						<span>창조관 중강당</span>
-					</div>
-				</div>
-				<div class="slot" id="B04" name="forOnlyT" onclick="javascript:pick(this)">
-					<h3>KSA 포럼</h3>
-					<div class="details">
-						<span>16~18시</span>
-						<span>창조관 중강당</span>
-					</div>
-				</div>
-				<div class="slot" id="B05" onclick="javascript:pick(this)">
-					<h3>문화공연</h3>
-					<div class="details">
-						<span>20~22시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="stages">
-					<div class="stage">6/28(목)</div>
-				</div>
-				<div class="slot" id="C01" onclick="javascript:pick(this)">
-					<h3>체험 활동</h3>
-					<div class="details">
-						<span>9~18시</span>
-						<span>- 부산근교 산업체 견학 및 투어</span>
-					</div>
-					<center>/</center>
-					<h3>교장단 프로그램</h3>
-					<div class="details">
-						<span>9~18시</span>
-						<span>- KSASF 및 대덕연구단지 투어</span>
-					</div>
-				</div>
-				<div class="slot" id="C02" onclick="javascript:pick(this)">
-					<h3>한국문화 특강</h3>
-					<div class="details">
-						<span>20~22시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="stages">
-					<div class="stage">6/29(금)</div>
-				</div>
-				<div class="slot" id="D01" name="forOnlyS" onclick="javascript:pick(this)">
-					<h3>과학경연활동</h3>
-					<div class="details">
-						<span>9~12시</span>
-						<span>DDC</span>
-					</div>
-				</div>
-				<div class="slot" id="D02" name="forOnlyT" onclick="javascript:pick(this)">
-					<h3>Education Workshop</h3>
-					<div class="details">
-						<span>10~12시</span>
-						<span>창조관 중강당</span>
-					</div>
-				</div>
-				<div class="slot" id="D03" onclick="javascript:pick(this)">
-					<h3>주제 탐구 활동 우수작 발표</h3>
-					<div class="details">
-						<span>14~15시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="slot" id="D04" onclick="javascript:pick(this)">
-					<h3>휴식</h3>
-					<div class="details">
-						<span>15~16시</span>
-					</div>
-				</div>
-				<div class="slot" id="D05" onclick="javascript:pick(this)">
-					<h3>폐막식</h3>
-					<div class="details">
-						<span>16~18시</span>
-						<span>본관 대강당</span>
-					</div>
-				</div>
-				<div class="slot" id="D06" onclick="javascript:pick(this)">
-					<h3>환송회</h3>
-					<div class="details">
-						<span>20~22시</span>
-						<span>본관 로비</span>
-					</div>
-				</div>
+			<div class="Upload" style="width: 154px; padding-top: 12px; padding-bottom: 12px; padding-left: 50px; padding-right: 50px; top: 572px; position: absolute; background: #0095FF; border-radius: 100px; justify-content: center; align-items: center; display: inline-flex">
+				<div class="Upload" style="text-align: center; color: white; font-size: 14px; font-family: Poppins; font-weight: 500; line-height: 16.80px; letter-spacing: 0.30px; word-wrap: break-word">Upload</div>
 			</div>
 		</div>
 		<div class="Sidebar" id="sidebar" style="top: 0px; width: 200px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); visibility: hidden">

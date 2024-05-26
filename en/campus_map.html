@@ -6,78 +6,42 @@
 		<title>KSANAVI - Campus Map</title>
 		<style>
 			body { margin: 0; }
-			.Tab { color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word; display: flex; align-items: center; }
-			.TabItem { width: 90px; display: flex; justify-content: center }
-			.PosName { width: 100%; height: 22px; left: 23px; top: 35px; position: relative; color: black; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; }
 		</style>
-		<script>
-			function selectTab(selected, img_src) {
-				for (elm of document.getElementsByClassName('Tab')) {
-					if (elm == selected)
-						elm.style.background = "#CAE8DE";
-					else
-						elm.style.background = "#F0F0F0";
-				}
-				document.getElementById('pos_name').textContent = selected.textContent;
-				document.getElementById('pos_img').src = img_src;
-
-				if (selected.textContent == "본관") {
-					document.getElementById('desc').childNodes[1].textContent = "학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.";
-				} else if (selected.textContent == "탐구관") {
-					document.getElementById('desc').childNodes[1].textContent = "탐구관 설명";
-				} else if (selected.textContent == "형설관") {
-					document.getElementById('desc').childNodes[1].textContent = "형설관 설명";
-				} else if (selected.textContent == "창조관") {
-					document.getElementById('desc').childNodes[1].textContent = "창조관 설명";
-				} else if (selected.textContent == "예지관") {
-					document.getElementById('desc').childNodes[1].textContent = "예지관 설명";
-				} else if (selected.textContent == "DDC") {
-					document.getElementById('desc').childNodes[1].textContent = "DDC 설명";
-				} else if (selected.textContent == "견우관") {
-					document.getElementById('desc').childNodes[1].textContent = "견우관 설명";
-				} else if (selected.textContent == "직녀관") {
-					document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
-				} else if (selected.textContent == "백양관") {
-					document.getElementById('desc').childNodes[1].textContent = "백양관 설명";
-				} else if (selected.textContent == "운동장") {
-					document.getElementById('desc').childNodes[1].textContent = "운동장 설명";
-				} else if (selected.textContent == "노벨공원") {
-					document.getElementById('desc').childNodes[1].textContent = "노벨공원 설명";
-				} else if (selected.textContent == "아크로폴리스") {
-					document.getElementById('desc').childNodes[1].textContent = "아크로폴리스 설명";
-				}
-			}
-		</script>
 	</head>
-	<body style="display: flex; flex-direction: column">
-		<div class="Header" style="width: 100%; height: 46px; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; align-items: center; display: flex">
+	<body style="height: 100%; display: flex; flex-direction: column">
+		<div style="width: 100%; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
+			<div class="Header" style="width: 100%; height: 46px; position: relative; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)"></div>
 			<img class="Menu" style="left: 6px; top: 10px; position: absolute; cursor: pointer" src="../img/menu.png" onclick="javascript:document.getElementById('sidebar').style.visibility='visible'" />
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
 			<img class="Home" style="right: 10px; top: 7px; position: absolute; cursor: pointer" src="../img/home.png" onclick="location.href='home.html'"/>
 		</div>
-		<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
-			<div style="position: relative;"><img width="100%" src="../img/map_2017.jpg"></div>
-			<div style="width: 94%; height: 40px; top: 12px; position: relative; overflow-x: scroll; display: flex">
-				<div class="Tab" style="background: #CAE8DE" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">본관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b05.png')"><div class="TabItem">탐구관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b06.png')"><div class="TabItem">형설관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b07.png')"><div class="TabItem">창조관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b11.png')"><div class="TabItem">예지관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b04.png')"><div class="TabItem">DDC</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08.jpg')"><div class="TabItem">견우관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b09.jpg')"><div class="TabItem">직녀관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">백양관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b12.jpg')"><div class="TabItem">운동장</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b13.jpg')"><div class="TabItem">노벨공원</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b03.jpg')"><div class="TabItem">아크로폴리스</div></div>
+		<div style="width: 100%; height: 100%; justify-content: center; display: inline-flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
+			<div class="Group" style="height: 30px; left: 10px; top: 56px; position: absolute">
+				<div class="Group" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute">
+					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #CAE8DE"></div>
+					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">본관</div>
+				</div>
+				<div class="Group" style="width: 90px; height: 30px; left: 90px; top: 0px; position: absolute">
+					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
+					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">탐구관</div>
+				</div>
+				<div class="Group" style="width: 90px; height: 30px; left: 180px; top: 0px; position: absolute">
+					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
+					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">형설관</div>
+				</div>
+				<div class="Group" style="width: 90px; height: 30px; left: 270px; top: 0px; position: absolute">
+					<div class="Rectangle" style="width: 90px; height: 30px; left: 0px; top: 0px; position: absolute; background: #F0F0F0"></div>
+					<div style="width: 80.74px; height: 15.60px; left: 9.26px; top: 4.80px; position: absolute; color: black; font-size: 14px; font-family: Poppins; font-weight: 500; word-wrap: break-word">창조관</div>
+				</div>
 			</div>
-			<div class="PosName" id="pos_name">본관</div>
-			<div class="Image" style="width: 94%; top: 50px; position: relative">
-				<img id="pos_img" style="width: 100%" src="../img/b02.png" />
+			<div class="Scrollbar" style="height: 15px; padding-top: 4px; padding-bottom: 3px; padding-left: 1px; padding-right: 1px; left: 10px; right: 10px; top: 90px; position: absolute; background: #FAFAFA; box-shadow: 0px -1px 0px #F0F0F0 inset; justify-content: flex-start; align-items: center; display: inline-flex">
+				<div class="Thumb" style="height: 8px; background: #C1C1C1; border-radius: 4px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+					<div class="Hspacer" style="color: #C1C1C1; font-size: 4px; font-family: Roboto; font-weight: 400; word-wrap: break-word">.. ....................</div>
+				</div>
 			</div>
-			<div id="desc" style="width: 92%; top: 60px; position: relative; color: black; font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-				<p>학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.</p>
-			</div>
+			<div style="width: 88px; height: 22px; left: 23px; top: 115px; position: absolute; color: black; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word">본관</div>
+			<div class="Rectangle" style="height: 212px; left: 17px; right: 17px; top: 149px; position: absolute; background: #D9D9D9"></div>
+			<div style="width: 313px; height: 95px; left: 23px; top: 384px; position: absolute; color: black; font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word">설명</div>
 		</div>
 		<div class="Sidebar" id="sidebar" style="top: 0px; width: 200px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); visibility: hidden">
 			<div style="width: 160px; height: 23px; left: 27px; top: 79px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule.html'">Schedule</div>
