@@ -3,26 +3,277 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>KSANAVI - 시간표</title>
+		<title>KSANAVI - Schedule</title>
 		<style>
-			body { margin: 0; }
+			:root {
+				--main-bg: rgb(238, 238, 238); --stage-time-bg: rgba(217, 217, 217);
+				--blue-slot-bg: rgba(52, 129, 174, 0.3); --blue-slot-text: rgba(52, 129, 174, 1);
+				--green-slot-bg: rgba(49, 223, 118, 0.42); --green-slot-text: rgba(40, 188, 99, 1);
+				--red-slot-bg: rgba(223, 49, 49, 0.28); --red-slot-text: rgba(223, 49, 49, 0.75);
+				--yellow-slot-bg: rgba(255, 230, 0, 0.3); --yellow-slot-text: rgb(229, 168, 46);
+				--break-bg: rgba(83, 83, 83); --break-text: rgba(38, 38, 38, 1);
+				--break-time-highlight: rgba(255, 110, 5, 0.5);
+			}
+
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			html { font-size: 40%; }
+			body { height: 100%; background: var(--main-bg); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 1.6rem; line-height: 1.1; }
+
+			.main-container { min-height: 100vh; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(16, 1fr); gap: 1rem; }
+			.stages-container-row { grid-column: 2 / -1; grid-row: 1 / 2; }
+			.stages { display: flex; justify-content: space-between; align-items: center; }
+			.stage { padding: 2rem 1rem; }
+			.stage, .time { background: var(--stage-time-bg); border-radius: 1rem; }
+			.details { display: flex; flex-direction: column; }
+			.button { width: 90px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+			.timing-container-column { grid-column: 1 / 2; grid-row: 1 / -1; }
+			.timings { height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 0 1rem; }
+			.time { display: flex; justify-content: center; align-items: center; padding: 2rem; background: var(--stage-time-bg); border-radius: 1rem; }
+
+			.subgrid-main-ui { grid-column: 2 / -1; grid-row: 2 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: repeat(15, 1fr); gap: 1rem; }
+			.slot { flex-direction: column; padding: 1rem; }
+			[class^="slot"] { padding-left: 1rem; }
+			.slot, .break { border-radius: 1.5rem; display: flex; justify-content: center; }
+
+			.slot:nth-child(1), .slot:nth-child(2), .slot:nth-child(3), .slot:nth-child(4), .slot:nth-child(5), .slot:nth-child(6) { background: var(--blue-slot-bg); }
+			.slot:nth-child(1) h3, .slot:nth-child(2) h3, .slot:nth-child(3) h3, .slot:nth-child(4) h3, .slot:nth-child(5) h3, .slot:nth-child(6) h3 { color: var(--blue-slot-text); }
+			.slot:nth-of-type(1) { grid-column: 1 / 2; grid-row: 3 / 4; }
+			.slot:nth-of-type(2) { grid-column: 1 / 2; grid-row: 4 / 6; }
+			.slot:nth-of-type(3) { grid-column: 1 / 2; grid-row: 8 / 9; }
+			.slot:nth-of-type(4) { grid-column: 1 / 2; grid-row: 9 / 10; }
+			.slot:nth-of-type(5) { grid-column: 1 / 2; grid-row: 10 / 12; }
+			.slot:nth-of-type(6) { grid-column: 1 / 2; grid-row: 14 / 16; }
+
+			.slot:nth-child(7), .slot:nth-child(8), .slot:nth-child(9), .slot:nth-child(10), .slot:nth-child(11) { background: var(--green-slot-bg); }
+			.slot:nth-child(7) h3, .slot:nth-child(8) h3, .slot:nth-child(9) h3, .slot:nth-child(10) h3, .slot:nth-child(11) h3 { color: var(--green-slot-text); }
+			.slot:nth-of-type(7) { grid-column: 2 / 3; grid-row: 3 / 6; }
+			.slot:nth-of-type(8) { grid-column: 2 / 3; grid-row: 8 / 12; }
+			.slot:nth-of-type(9) { grid-column: 2 / 3; grid-row: 9 / 10; }
+			.slot:nth-of-type(10) { grid-column: 2 / 3; grid-row: 10 / 12; }
+			.slot:nth-of-type(11) { grid-column: 2 / 3; grid-row: 14 / 16; }
+
+			.slot:nth-of-type(12), .slot:nth-of-type(13) { background: var(--yellow-slot-bg); }
+			.slot:nth-of-type(12) h3, .slot:nth-of-type(13) h3 { color: var(--yellow-slot-text); }
+			.slot:nth-of-type(12) { grid-column: 3 / 4; grid-row: 3 / 12; }
+			.slot:nth-of-type(13) { grid-column: 3 / 4; grid-row: 14 / 16; }
+
+			.slot:nth-of-type(14), .slot:nth-of-type(15), .slot:nth-of-type(16), .slot:nth-of-type(17), .slot:nth-of-type(18), .slot:nth-of-type(19) { background: var(--red-slot-bg); }
+			.slot:nth-of-type(14) h3, .slot:nth-of-type(15) h3, .slot:nth-of-type(16) h3, .slot:nth-of-type(17) h3, .slot:nth-of-type(18) h3, .slot:nth-of-type(19) h3 { color: var(--red-slot-text); }
+			.slot:nth-of-type(14) { grid-column: 4 / 5; grid-row: 3 / 6; }
+			.slot:nth-of-type(15) { grid-column: 4 / 5; grid-row: 4 / 6; }
+			.slot:nth-of-type(16) { grid-column: 4 / 5; grid-row: 8 / 9; }
+			.slot:nth-of-type(17) { grid-column: 4 / 5; grid-row: 9 / 10; }
+			.slot:nth-of-type(18) { grid-column: 4 / 5; grid-row: 10 / 12; }
+			.slot:nth-of-type(19) { grid-column: 4 / 5; grid-row: 14 / 16; }
+
+			.break { background: rgba(83, 83, 83, 0.21); align-items: center; font-size: 2rem; color: rgba(38, 38, 38); letter-spacing: 1.3px; font-weight: bold; padding: 0; }
+			.break:nth-of-type(20) { grid-column: 1 / -1; grid-row: 1 / 3; }
+			.break:nth-of-type(21) { grid-column: 1 / -1; grid-row: 6 / 8; }
+			.break:nth-of-type(22) { grid-column: 1 / -1; grid-row: 12 / 14; }
+
+			.time:nth-of-type(2), .time:nth-of-type(3), .time:nth-of-type(7), .time:nth-of-type(8), .time:nth-of-type(13), .time:nth-of-type(14) { background: rgba(255, 110, 5, 0.5); }
 		</style>
+		<script>
+			function setVisibility(v, h) {
+				document.getElementsByName(v).forEach((elm) => elm.style.visibility = 'visible');
+				document.getElementsByName(h).forEach((elm) => elm.style.visibility = 'hidden');
+				document.getElementById(v).style = "border: 1px solid #4B7DAB; background: #CAE8DE";
+				document.getElementById(h).style = "border: 1px solid #003458; background: #F0F0F0";
+			}
+
+			function navigate(elm) {
+				location.href = "navigation.html?dest=" + elm.lastElementChild.innerText.replace(/ .*/,'');
+			}
+
+			function getCookie(name) {
+				let matches = document.cookie.match(new RegExp(
+					"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+				));
+				return matches ? decodeURIComponent(matches[1]) : undefined;
+			}
+
+			function checkCookie() {
+				SorT = getCookie("st");
+
+				if (SorT == "T")
+					setVisibility('forOnlyT', 'forOnlyS');
+				else
+					setVisibility('forOnlyS', 'forOnlyT');
+
+				for (elm of document.getElementsByClassName('slot')) {
+					if (getCookie(elm.id) == 'Y')
+						elm.style.border = '2px solid rgba(255, 110, 5, 0.5)';
+				}
+			}
+		</script>
 	</head>
-	<body style="height: 100%; display: flex; flex-direction: column">
-		<div style="width: 100%; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-			<div class="Header" style="width: 100%; height: 46px; position: relative; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)"></div>
+	<body style="height: 100%; display: flex; flex-direction: column" onload="javascript:checkCookie()">
+		<div class="Header" style="width: 100%; height: 46px; background: #4B7DAB; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; align-items: center; display: flex">
 			<img class="Menu" style="left: 6px; top: 10px; position: absolute; cursor: pointer" src="../img/menu.png" onclick="javascript:document.getElementById('sidebar').style.visibility='visible'" />
 			<img class="Logo" style="top: 7px; position: absolute" src="../img/logo.png" />
 			<img class="Home" style="right: 10px; top: 7px; position: absolute; cursor: pointer" src="../img/home.png" onclick="location.href='home.html'"/>
 		</div>
-		<div style="width: 100%; height: 100%; justify-content: center; display: inline-flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
-			<img class="Schedule" style="top: 110px; position: absolute" src="../img/schedule_ex.png" />
+		<div style="width: 100%; height: 100%; justify-content: center; display: flex" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
+			<div style="top: 60px; position: absolute; display: flex">
+				<div class="button" id="forOnlyS" onclick="javascript:setVisibility('forOnlyS', 'forOnlyT')"><h2>Student</h2></div><div style="width: 5px"></div>
+				<div class="button" id="forOnlyT" onclick="javascript:setVisibility('forOnlyT', 'forOnlyS')"><h2>Teacher</h2></div>
+			</div>
+			<div class="main-container" style="top: 110px; position: absolute">
+				<div class="stages-container-row">
+					<div class="stages">
+						<div class="stage">6/26(화)</div>
+						<div class="stage">6/27(수)</div>
+						<div class="stage">6/28(목)</div>
+						<div class="stage">6/29(금)</div>
+					</div>
+				</div>
+				<div class="timing-container-column">
+					<div class="timings">
+						<div class="time">/</div>
+						<div class="time">07:00</div>
+						<div class="time">08:00</div>
+						<div class="time">09:00</div>
+						<div class="time">10:00</div>
+						<div class="time">11:00</div>
+						<div class="time">12:00</div>
+						<div class="time">13:00</div>
+						<div class="time">14:00</div>
+						<div class="time">15:00</div>
+						<div class="time">16:00</div>
+						<div class="time">17:00</div>
+						<div class="time">18:00</div>
+						<div class="time">19:00</div>
+						<div class="time">20:00</div>
+						<div class="time">21:00</div>
+					</div>
+				</div>
+				<div class="subgrid-main-ui">
+					<div class="slot" id="A01" onclick="javascript:navigate(this)">
+						<h3>일정소개</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="A02">
+						<h3>캠퍼스 투어</h3>
+					</div>
+					<div class="slot" id="A03" onclick="javascript:navigate(this)">
+						<h3>개막식</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="A04" onclick="javascript:navigate(this)">
+						<h3>전문가 특강</h3>
+						<div class="details">
+							<span>창조관 중강당</span>
+						</div>
+					</div>
+					<div class="slot" id="A05" onclick="javascript:navigate(this)">
+						<h3>포스터 발표</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="A06" onclick="javascript:navigate(this)">
+						<h3>환영회</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="B01" onclick="javascript:navigate(this)">
+						<h3>구두 발표</h3>
+						<div class="details">
+							<span>형설관</span>
+						</div>
+					</div>
+					<div class="slot" id="B02" name="forOnlyS" onclick="javascript:navigate(this)">
+						<h3>주제탐구활동</h3>
+						<div class="details">
+							<span>DDC</span>
+						</div>
+					</div>
+					<div class="slot" id="B03" name="forOnlyT" onclick="javascript:navigate(this)">
+						<h3>교사 교류</h3>
+						<div class="details">
+							<span>창조관 중강당</span>
+						</div>
+					</div>
+					<div class="slot" id="B04" name="forOnlyT" onclick="javascript:navigate(this)">
+						<h3>KSA 포럼</h3>
+						<div class="details">
+							<span>창조관 중강당</span>
+						</div>
+					</div>
+					<div class="slot" id="B05" onclick="javascript:navigate(this)">
+						<h3>문화공연</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="C01">
+						<h3>체험 활동</h3>
+						<div class="details">
+							<span>- 부산근교 산업체 견학 및 투어</span>
+						</div><br><br><br><br><br><br>
+						<center>/</center><br><br><br><br><br><br>
+						<h3>교장단 프로그램</h3>
+						<div class="details">
+							<span>- KSASF 및 대덕연구단지 투어</span>
+						</div>
+					</div>
+					<div class="slot" id="C02" onclick="javascript:navigate(this)">
+						<h3>한국문화 특강</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="D01" name="forOnlyS" onclick="javascript:navigate(this)">
+						<h3>과학경연활동</h3>
+						<div class="details">
+							<span>DDC</span>
+						</div>
+					</div>
+					<div class="slot" id="D02" name="forOnlyT" onclick="javascript:navigate(this)">
+						<h3>Education Workshop</h3>
+						<div class="details">
+							<span>창조관 중강당</span>
+						</div>
+					</div>
+					<div class="slot" id="D03" onclick="javascript:navigate(this)">
+						<!-- <h3>주제 탐구 활동 우수작 발표</h3> -->
+						<h3>우수작 발표</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="D04">
+						<h3>휴식</h3>
+					</div>
+					<div class="slot" id="D05" onclick="javascript:navigate(this)">
+						<h3>폐막식</h3>
+						<div class="details">
+							<span>본관 대강당</span>
+						</div>
+					</div>
+					<div class="slot" id="D06" onclick="javascript:navigate(this)">
+						<h3>환송회</h3>
+						<div class="details">
+							<span>본관 로비</span>
+						</div>
+					</div>
+					<div class="break">조식</div>
+					<div class="break">중식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					<div class="break">석식 및 휴식</div>
+				</div>
+			</div>
 		</div>
-		<div class="Sidebar" id="sidebar" style="top: 0px; width: 200px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); visibility: hidden">
-			<div style="width: 160px; height: 23px; left: 27px; top: 79px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule.html'">Schedule</div>
-			<div style="width: 160px; height: 23px; left: 27px; top: 122px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='navigation.html'">Navigation</div>
-			<div style="width: 160px; height: 23px; left: 27px; top: 165px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='campus_map.html'">Campus Map</div>
-			<div style="width: 160px; height: 23px; left: 27px; top: 208px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule_setting.html'">Schedule Setting</div>
+		<div class="Sidebar" id="sidebar" style="width: 166px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); visibility: hidden">
+			<div style="width: 94px; height: 23px; left: 27px; top: 79px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule.html'">시간표</div>
+			<div style="width: 94px; height: 23px; left: 27px; top: 122px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='navigation.html'">길찾기</div>
+			<div style="width: 94px; height: 23px; left: 27px; top: 165px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='campus_map.html'">캠퍼스 맵</div>
+			<div style="width: 112px; height: 23px; left: 27px; top: 208px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule_setting.html'">시간표 설정</div>
 			<div class="Language" style="width: 156px; left: 10px; bottom: 50px; position: absolute; cursor: pointer" onclick="window.location='../language.html'">
 				<img class="GlobeIcon" style="width: 34.54px; height: 30px; position: absolute" src="../img/globe_w.png" />
 				<div class="Lang" style="width: 112px; height: 23px; left: 44px; top: 4px; position: absolute; color: #003458; font-size: 16px; font-family: Poppins; font-weight: bold; word-wrap: break-word">language</div>
