@@ -28,7 +28,7 @@ function init() {
 	
 	const loader = new GLTFLoader();
 	loader.load("../map.glb", function (gltf) {
-		//gltf.scene.rotation.y = -0.6
+		gltf.scene.rotation.y = -0.6
 		scene.add(gltf.scene);
 		render();
 	});
