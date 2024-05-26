@@ -20,6 +20,32 @@
 				}
 				document.getElementById('pos_name').textContent = selected.textContent;
 				document.getElementById('pos_img').src = img_src;
+
+				if (selected.textContent == "본관") {
+					document.getElementById('desc').childNodes[1].textContent = "학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.";
+				} else if (selected.textContent == "탐구관") {
+					document.getElementById('desc').childNodes[1].textContent = "탐구관 설명";
+				} else if (selected.textContent == "형설관") {
+					document.getElementById('desc').childNodes[1].textContent = "형설관 설명";
+				} else if (selected.textContent == "창조관") {
+					document.getElementById('desc').childNodes[1].textContent = "창조관 설명";
+				} else if (selected.textContent == "예지관") {
+					document.getElementById('desc').childNodes[1].textContent = "예지관 설명";
+				} else if (selected.textContent == "DDC") {
+					document.getElementById('desc').childNodes[1].textContent = "DDC 설명";
+				} else if (selected.textContent == "견우관") {
+					document.getElementById('desc').childNodes[1].textContent = "견우관 설명";
+				} else if (selected.textContent == "직녀관") {
+					document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
+				} else if (selected.textContent == "백양관") {
+					document.getElementById('desc').childNodes[1].textContent = "백양관 설명";
+				} else if (selected.textContent == "운동장") {
+					document.getElementById('desc').childNodes[1].textContent = "운동장 설명";
+				} else if (selected.textContent == "노벨공원") {
+					document.getElementById('desc').childNodes[1].textContent = "노벨공원 설명";
+				} else if (selected.textContent == "아크로폴리스") {
+					document.getElementById('desc').childNodes[1].textContent = "아크로폴리스 설명";
+				}
 			}
 		</script>
 	</head>
@@ -49,7 +75,7 @@
 			<div class="Image" style="width: 94%; top: 50px; position: relative">
 				<img id="pos_img" style="width: 100%" src="../img/b02.png" />
 			</div>
-			<div style="width: 92%; top: 60px; position: relative; color: black; font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+			<div id="desc" style="width: 92%; top: 60px; position: relative; color: black; font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word">
 				<p>학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.</p>
 			</div>
 		</div>
