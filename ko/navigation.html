@@ -660,7 +660,7 @@
 
 					return { distance: costs.dest, path: optimalPath };
 				};
-
+				
 				function findLowestCostNode(costs, processed) {
 					return Object.keys(costs).reduce((lowest, node) => {
 						if (lowest === null || costs[node] < costs[lowest]) {
@@ -671,6 +671,239 @@
 						return lowest;
 					}, null);
 				};
+				var points;
+				p = {
+					탐구관입구앞: new Arrays.asList(-7.2, -13.2, 3.5),
+					탐구관입구 : new Arrays.asList(-7.2, -13.2, 3.5),
+					탐복도창조1: new Arrays.asList(-7.2, -15, 3.5),
+					탐복도창조2: new Arrays.asList(-7.2, -15, 5),
+					탐복도DDC1 : new Arrays.asList(9.6, -15, 3.5),
+					형복도DDC1 : new Arrays.asList(9.6, -22.8, 5),
+					형복도창조1 : new Arrays.asList(-7.2, -22.8, 5),
+					창조다리탐구 : new Arrays.asList(-7.2, -19.2, 6.5),
+					창조다리창조 : new Arrays.asList(-19.5, -19.2, 6.5),
+					창조입구 : new Arrays.asList(-19.5, -16, 3.5),
+					창조입구앞 : new Arrays.asList(-13.5, -16, 3.5),
+					DDC1 : new Arrays.asList(9.6, -6, 3.5),
+					창복도1 : new Arrays.asList(-25, -16, 2),
+					본관복도탐구 : new Arrays.asList(-7.2, -11.5, 0.5),
+					본관다리앞 : new Arrays.asList(-7.2, -0.2, 3.5),
+					본관입구견우 : new Arrays.asList(-7.2, -0.2, 0.5),
+					본관입구견우앞 : new Arrays.asList(-13.5, 0.2, 0.5),
+					본관1 : new Arrays.asList(-7.2, 2.5, 0.5),
+					본관3 : new Arrays.asList(-7.2, 2.5, 3.5),
+					본관입구예지 : new Arrays.asList(-3, 2.5, 0.5),
+					본관입구예지앞 : new Arrays.asList(-3, 8.5, 0.5),
+					중앙 : new Arrays.asList(-13.5, 8.5, 0.5),
+					예지가는길 : new Arrays.asList(7, 8.5, 0.5),
+					예지입구앞 : new Arrays.asList(7, 11, 0.5),
+					예지입구1 : new Arrays.asList(12, 11, 0.5),
+					견우입구 : new Arrays.asList(-17.5, -1.5, 2),
+					견우 : new Arrays.asList(-20, -1.5, 2),
+					직녀 : new Arrays.asList(-33, -1.5, 2),
+					메인비탈길앞 : new Arrays.asList(-17.5, -7.8, 2),
+					메인비탈길중간 : new Arrays.asList(-13.5, -7.8, 2),
+					견우다리가는길1 : new Arrays.asList(-16, -1.5, 2),
+					견우다리가는길2 : new Arrays.asList(-16, -0.2, 2),
+					견우다리가는길3 : new Arrays.asList(-16, -0.2, 3.5)
+				}
+				function shortestPath(start, finish) {
+					if (start === "본관") {
+						if (finish === "탐구관") {
+							return new double[][] { p['본관1'], p['본관3'], p['본관입구견우'], p['탐구입구'], p['탐복도창조1'] };
+						}
+						if (finish === "형설관") {
+							return new double[][] { p['본관1'], p['본관3'], p['본관입구견우'], p['탐구입구'], p['탐복도창조1'], p['탐복도창조2'], p['형복도창조1'] };
+						}
+						if (finish === "창조관") {
+							return new double[][] { p['본관1'], p['본관입구견우'], p['본관입구견우앞'], p['메인비탈길중간'], p['탐구관입구앞'], p['창조입구앞'], p['창조입구'] };
+						}
+						if (finish === "예지관") {
+							return new double[][] { p['본관1'], p['본관입구예지'], p['본관입구예지앞'], p['예지가는길'], p['예지입구앞'], p['예지입구1'] };
+						}
+						if (finish === "DDC") {
+							return new double[][] { p['본관1'], p['본관3'], p['본관입구견우'], p['탐구입구'], p['탐복도창조1'], p['탐복도DDC1'] };
+						}
+						if (finish === "견우관") {
+							return new double[][] { p['본관1'], p['본관입구견우'], p['본관입구견우앞'], p['견우입구'], p['견우'] };
+						}
+						if (finish === "직녀관") {
+							return new double[][] { p['본관1'], p['본관입구견우'], p['본관입구견우앞'], p['견우입구'], p['견우'], p['직녀'] };
+						}
+					if (start === "탐구관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					if (start === "본관") {
+						if (finish === "본관") {
+							return new double[][] {};
+						}
+						if (finish === "탐구관") {
+							return new double[][] {};
+						}
+						if (finish === "형설관") {
+							return new double[][] {};
+						}
+						if (finish === "창조관") {
+							return new double[][] {};
+						}
+						if (finish === "예지관") {
+							return new double[][] {};
+						}
+						if (finish === "DDC") {
+							return new double[][] {};
+						}
+						if (finish === "견우관") {
+							return new double[][] {};
+						}
+						if (finish === "직녀관") {
+							return new double[][] {};
+						}
+					
+					}
 			</script>
 			<div id="map-3d" style="width: 100%; height: 50%" onclick="javascript:document.getElementById('sel_dept').style.visibility='hidden'; avascript:document.getElementById('sel_dest').style.visibility='hidden'"></div>
 			<script type="module" src="/main.js"></script>
