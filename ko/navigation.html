@@ -570,6 +570,10 @@
 
 				function navigate() {
 					initGraph();
+
+					if (polylinePath != undefined)
+						polylinePath.setMap(null);
+
 					const dept_near = findNearest(marker_dept.getPosition());
 					const dest_near = findNearest(marker_dest.getPosition());
 
