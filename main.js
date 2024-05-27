@@ -65,6 +65,7 @@ export function drawPath(pointsArray) {
         });
 	//scene.remove(line);*/
 	addRedLineFromPoints(scene, pointsArray);
+	render();
 }
 
 function onWindowResize() {
