@@ -21,30 +21,31 @@
 				document.getElementById('pos_name').textContent = selected.textContent;
 				document.getElementById('pos_img').src = img_src;
 
-				if (selected.textContent == "본관") {
-					document.getElementById('desc').childNodes[1].textContent = "학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.";
-				} else if (selected.textContent == "탐구관") {
-					document.getElementById('desc').childNodes[1].textContent = "탐구관 설명";
-				} else if (selected.textContent == "형설관") {
-					document.getElementById('desc').childNodes[1].textContent = "형설관 설명";
-				} else if (selected.textContent == "창조관") {
-					document.getElementById('desc').childNodes[1].textContent = "창조관 설명";
-				} else if (selected.textContent == "예지관") {
-					document.getElementById('desc').childNodes[1].textContent = "예지관 설명";
+				if (selected.textContent == "Main Building") {
+					document.getElementById('desc').childNodes[1].textContent = "The main building is the first thing you see when you enter the school and serves as the center of the school. The first floor houses the students' cafeteria and the principal's office, while the second floor is the main auditorium and gymnasium, where various events are held and physical education classes are held. The third floor houses seminar rooms, a library with about 70,000 books, and a suspension bridge that connects to the boys' dormitory, Gyowugwan.";
+				} else if (selected.textContent == "Tamgugwan") {
+					document.getElementById('desc').childNodes[1].textContent = "The Tamgugwan is a long building connected to the third floor of the main building and is mainly used for student learning activities. It consists of several laboratories, classrooms, and faculty offices, including the offices of the Department of Chemistry and Biochemistry on the first floor and the Department of Physical and Earth Sciences on the third floor. In addition, the end of the building houses the offices of English teachers and classrooms for English classes.";
+				} else if (selected.textContent == "Hyeongseolgwan") {
+					document.getElementById('desc').childNodes[1].textContent = "Like the Tamgugwan, it is a space for student learning. Due to the slope of the school, it is connected to the Tamgugwan on different floors. The first floor of the Tamgugwan houses the offices of the Faculty of Humanities and Arts, the Health Center, and the Counseling Center, while the fifth floor houses the offices of the Faculty of Mathematical and Information Sciences. Most of the rooms are used as lecture halls, with several screened classrooms on the second floor for humanities classes.";
+				} else if (selected.textContent == "Changjogwan") {
+					document.getElementById('desc').childNodes[1].textContent = "The Changjogwan is the tallest building in the school, rising up to the eighth floor, above which is the observatory. It mainly consists of teachers' offices, laboratories, and study rooms. On the first floor is the Creation Cafe, which students can use freely, and the second floor is the main auditorium, where many lectures and programs are held. The third floor houses the Cloud Bridge, which connects to the third floor of the Exploration Center, the History Center, and the third-year tutorial rooms. The fourth through seventh floors house laboratories and offices in various fields, and the eighth floor houses the Sky Garden and second-year study rooms. The 9th floor houses the observatory with a sliding dome and a circular dome.";
+				} else if (selected.textContent == "Yejigwan") {
+					document.getElementById('desc').childNodes[1].textContent = "Located on the left side of the main building, the Forecasting Center is a space for students to relax and recreate. On the first floor, there is a science hands-on classroom for visitors, while the third floor houses the KSA Orchestra practice room, music room, and instrument room. The fourth floor is the art room where art classes are held, and the fifth floor is home to club rooms, karaoke rooms, and billiard rooms that are often used by students. Finally, the sixth floor is home to a gymnasium where students can play basketball, volleyball, badminton, and other sports.";
 				} else if (selected.textContent == "DDC") {
-					document.getElementById('desc').childNodes[1].textContent = "DDC 설명";
-				} else if (selected.textContent == "견우관") {
-					document.getElementById('desc').childNodes[1].textContent = "견우관 설명";
-				} else if (selected.textContent == "직녀관") {
-					document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
-				} else if (selected.textContent == "백양관") {
-					document.getElementById('desc').childNodes[1].textContent = "백양관 설명";
-				} else if (selected.textContent == "운동장") {
-					document.getElementById('desc').childNodes[1].textContent = "운동장 설명";
-				} else if (selected.textContent == "노벨공원") {
-					document.getElementById('desc').childNodes[1].textContent = "노벨공원 설명";
-				} else if (selected.textContent == "아크로폴리스") {
-					document.getElementById('desc').childNodes[1].textContent = "아크로폴리스 설명";
+					document.getElementById('desc').childNodes[1].textContent = "A center for creative design and imagination at the Korea Science and Gifted Academy (KSA), an affiliate of the Korea Advanced Institute of Science and Technology (KAIST). The Dream Design Center (DDC) is a place where students can pursue their dreams in a relaxed atmosphere, using a variety of 3D equipment to inspire them to create their own prototypes from their initial ideas. With a wide range of tools for prototyping and machining, the DDC provides a seamless process for students to take their designs from initial sketches to the perfect final product.";
+				// } else if (selected.textContent == "Gyeonwoogwan") {
+				} else if (selected.textContent == "Gyeonwoogwan,Jignyeogwan") {
+					document.getElementById('desc').childNodes[1].textContent = "Gyeonwoogwan and Jignyeogwan are dormitories for male and female students, respectively, and the two buildings are connected by an overhead bridge. Gyeonwoogwan has five floors, and Jignyeogwan has four floors, with rooms for students to live in during the semester. There are also common rooms and study rooms with Wi-Fi that students are free to use.";
+				// } else if (selected.textContent == "Jignyeogwan") {
+				// 	document.getElementById('desc').childNodes[1].textContent = "Jignyeogwan";
+				} else if (selected.textContent == "Baekyanggwan") {
+					document.getElementById('desc').childNodes[1].textContent = "Baekyang Building is home to several facilities. The first floor houses the laundry room, while the second floor houses the Admissions Office and conference rooms. The 3rd through 5th floors are used as guest rooms. The guest rooms are equipped with TVs and electric heaters, and are also equipped with shower facilities for your convenience.";
+				} else if (selected.textContent == "Playgrounds") {
+					document.getElementById('desc').childNodes[1].textContent = "Playgrounds";
+				} else if (selected.textContent == "Nobel Park") {
+					document.getElementById('desc').childNodes[1].textContent = "Nobel Park";
+				} else if (selected.textContent == "Acropolis") {
+					document.getElementById('desc').childNodes[1].textContent = "Acropolis";
 				}
 			}
 		</script>
@@ -58,25 +59,26 @@
 		<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center" onclick="javascript:document.getElementById('sidebar').style.visibility='hidden'">
 			<div style="position: relative;"><img width="100%" src="../img/map_2017.jpg"></div>
 			<div style="width: 94%; height: 40px; top: 12px; position: relative; overflow-x: scroll; display: flex">
-				<div class="Tab" style="background: #CAE8DE" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">본관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b05.png')"><div class="TabItem">탐구관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b06.png')"><div class="TabItem">형설관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b07.png')"><div class="TabItem">창조관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b11.png')"><div class="TabItem">예지관</div></div>
+				<div class="Tab" style="background: #CAE8DE" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">Main Building</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b05.png')"><div class="TabItem">Tamgugwan</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b06.png')"><div class="TabItem">Hyeongseolgwan</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b07.png')"><div class="TabItem">Changjogwan</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b11.png')"><div class="TabItem">Yejigwan</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b04.png')"><div class="TabItem">DDC</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08.jpg')"><div class="TabItem">견우관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b09.jpg')"><div class="TabItem">직녀관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">백양관</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08_09.png')"><div class="TabItem">Gyeonwoogwan,Jignyeogwan</div></div>
+<!-- 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08.jpg')"><div class="TabItem">Gyeonwoogwan</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b09.jpg')"><div class="TabItem">Jignyeogwan</div></div> -->
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">Baekyanggwan</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b12.jpg')"><div class="TabItem">운동장</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b13.jpg')"><div class="TabItem">노벨공원</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b03.jpg')"><div class="TabItem">아크로폴리스</div></div>
 			</div>
-			<div class="PosName" id="pos_name">본관</div>
+			<div class="PosName" id="pos_name">Main Building</div>
 			<div class="Image" style="width: 94%; top: 50px; position: relative">
 				<img id="pos_img" style="width: 100%" src="../img/b02.png" />
 			</div>
 			<div id="desc" style="width: 92%; top: 60px; position: relative; color: black; font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-				<p>학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.</p>
+				<p>The main building is the first thing you see when you enter the school and serves as the center of the school. The first floor houses the students' cafeteria and the principal's office, while the second floor is the main auditorium and gymnasium, where various events are held and physical education classes are held. The third floor houses seminar rooms, a library with about 70,000 books, and a suspension bridge that connects to the boys' dormitory, Gyowugwan.</p>
 			</div>
 		</div>
 		<div class="Sidebar" id="sidebar" style="top: 0px; width: 200px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); visibility: hidden">
