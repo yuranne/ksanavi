@@ -38,11 +38,8 @@ function init() {
 	//출발지부터 도착지의 점 리스트 입력
 	//예시
 	const pointsArray = [
-            [0, 0, 0],
-            [20, 0, 0],
-            [20, 3, 20],
-            [0, 3, 20]
         ];
+	//const pointsArray = [shortestPath(start, finish)];
         addRedLineFromPoints(scene, pointsArray);
 
 
