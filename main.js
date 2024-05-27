@@ -65,7 +65,7 @@ export function drawPath(pointsArray) {
               		object.material.dispose();
 		}
         });
-	scene.remove(line);
+	//scene.remove(line);
 	addRedLineFromPoints(scene, pointsArray);
 	//render();
 }
