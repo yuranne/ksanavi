@@ -2,7 +2,6 @@ import * as THREE from "three";
 
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-//import { shortestPath, start, finish } from "ko/navigation.js"
 
 let container, camera, scene, renderer;
 
@@ -34,16 +33,6 @@ function init() {
 		render();
 	});
 
-
-	//출발지부터 도착지의 점 리스트 입력
-	//예시
-	const pointsArray = [
-        ];
-	//const pointsArray = [shortestPath(start, finish)];
-        addRedLineFromPoints(scene, pointsArray);
-
-
-
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(container.clientWidth, container.clientHeight);
@@ -59,14 +48,18 @@ function init() {
 }
 
 function addRedLineFromPoints(scene, pointsArray) {
-            const material = new THREE.LineBasicMaterial({ color: 0xff0000 }); // 붉은색
-            const points = pointsArray.map(point => new THREE.Vector3(...point));
+	const material = new THREE.LineBasicMaterial({ color: 0xff0000 }); // 붉은색
+	const points = pointsArray.map(point => new THREE.Vector3(...point));
 
-            const geometry = new THREE.BufferGeometry().setFromPoints(points);
-            const line = new THREE.Line(geometry, material);
+	const geometry = new THREE.BufferGeometry().setFromPoints(points);
+	const line = new THREE.Line(geometry, material);
 
-            scene.add(line);
-        }
+	scene.add(line);
+}
+
+export function drawPath(pointsArray) {
+	addRedLineFromPoints(scene, pointsArray);
+}
 
 function onWindowResize() {
 	camera.aspect = container.clientWidth / container.clientHeight;

@@ -72,7 +72,6 @@
 				</div>
 			</div>
 			<div id="map-3d" style="width: 100%; height: 50%" onclick="javascript:document.getElementById('sel_dept').style.visibility='hidden'; avascript:document.getElementById('sel_dest').style.visibility='hidden'"></div>
-			<script type="module" src="/main.js"></script>
 		</div>
 		<div class="Sidebar" id="sidebar" style="width: 166px; height: 100%; position: absolute; background: rgba(75, 125, 171, 0.80); z-index: 3; visibility: hidden">
 			<div style="width: 94px; height: 23px; left: 27px; top: 79px; position: absolute; color: #003458; font-size: 20px; font-family: Inter; font-weight: 800; word-wrap: break-word; cursor: pointer" onclick="location.href='schedule.html'">시간표</div>
@@ -85,6 +84,7 @@
 			</div>
 		</div>
 		<div id="toast_message"></div>
+
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de71144a2ac56fdf95a97e149aa7e203&libraries=services"></script>
 		<script>
 			var ksaLatLng;
@@ -612,6 +612,8 @@
 				var distance = Math.round(polylinePath.getLength());
 				var walkkTime = distance / 1.04 | 0;
 				toast('거리: ' + distance + 'm\n도보: ' + walkkTime + '초', 5000);
+
+				// drawPath(shortestPath('본관', 'DDC'));
 			}
 			
 			function toast(msg, ms){
@@ -688,7 +690,10 @@
 			
 			initGraph();
 			navigateByParam();
-			
+		</script>
+		<script type="module">
+			import { drawPath } from '/main.js';
+
 			var p;
 			p = {
 				탐구입구앞: [-7.2, -13.2, 3.5],
@@ -731,8 +736,6 @@
 				예지DDC3 : [14.7, -6, 3.5]
 			}
 			
-			var start = document.getElementById('dept_default');
-			var finish = document.getElementById('dest_default')
 			function shortestPath(start, finish) {
 			    if (start === "본관") {
 			        if (finish === "탐구관") {
@@ -912,7 +915,14 @@
 			        } }
 			    return [];
 			}
-			// export { start, finish, shortestPath }
+
+			window.addEventListener("click", (event) => {
+				if (event.target.className == 'ArrowWhite') {
+					var start = document.getElementById('dept_default').textContent;
+					var finish = document.getElementById('dest_default').textContent;
+					drawPath(shortestPath(start, finish));
+				}
+			});
 		</script>
 	</body>
 </html>
