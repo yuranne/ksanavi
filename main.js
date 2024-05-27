@@ -28,7 +28,7 @@ function init() {
 	
 	const loader = new GLTFLoader();
 	loader.load("../map.glb", function (gltf) {
-		gltf.scene.rotation.x = Math.PI / 2;
+		//gltf.scene.rotation.x = Math.PI / 2;
 		scene.add(gltf.scene);
 		render();
 	});
@@ -52,6 +52,7 @@ function addRedLineFromPoints(scene, pointsArray) {
 	const points = pointsArray.map(point => new THREE.Vector3(...point));
 
 	const geometry = new THREE.BufferGeometry().setFromPoints(points);
+	geometry.rotation.x = Math.PI / -2;
 	const line = new THREE.Line(geometry, material);
 
 	scene.add(line);
