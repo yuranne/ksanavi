@@ -53,7 +53,7 @@ function addRedLineFromPoints(scene, pointsArray) {
 
 	const geometry = new THREE.BufferGeometry().setFromPoints(points);
 	const line = new THREE.Line(geometry, material);
-	line.rotation.x = Math.PI / 2;
+	line.rotation.x = Math.PI / 2 * 3;
 	scene.add(line);
 }
 
