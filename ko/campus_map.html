@@ -33,10 +33,11 @@
 					document.getElementById('desc').childNodes[1].textContent = "본관 왼쪽에 위치한 예지관은 학생들의 휴식과 여가생활을 위한 공간입니다. 1층에는 방문객들을 위한 과학 체험 교실이 있으며, 3층에는 KSA 오케스트라 연습실, 음악실, 악기실이 있습니다. 4층에는 미술 수업이 진행되는 미술실, 5층에는 동아리실과 학생들이 자주 이용하는 노래방, 당구장이 위치해 있습니다. 마지막으로 6층에는 농구, 배구, 배드민턴 등 다양한 운동을 할 수 있는 체육관이 마련되어 있습니다.";
 				} else if (selected.textContent == "DDC") {
 					document.getElementById('desc').childNodes[1].textContent = "한국과학기술원(KAIST)부설 한국과학영재학교(KSA)에 있는 창조적 디자인과 상상의 중심입니다. 드림 디자인센터(DDC)는 편안한 분위기에서 다양한 3D 장비를 이용하여 초기 아이디어에서부터 각자 고유의 시제품을 만들 수 있도록 영감을 자극하여 그들의 꿈을 펼칠 수 있는 곳입니다. 다양한 시제품 제작과 공작에 필요한 다양한 도구들을 구비함으로써 학생들이 초기 형태의 밑그림에서 완벽한 최종 산물이 만들어질 수 있도록 완벽한 제작과정을 제공합니다.";
-				} else if (selected.textContent == "견우관") {
+				// } else if (selected.textContent == "견우관") {
+				} else if (selected.textContent == "견우관,직녀관") {
 					document.getElementById('desc').childNodes[1].textContent = "견우관과 직녀관은 각각 남학생과 여학생을 위한 기숙사로, 두 건물은 오작교로 연결되어 있습니다. 견우관은 5층, 직녀관은 4층까지 있으며, 학생들이 학기 중에 생활하는 방이 마련되어 있습니다. 또한, 학생들이 자유롭게 이용할 수 있는 휴게실과 와이파이가 제공되는 자습실도 갖추고 있습니다.";
-				} else if (selected.textContent == "직녀관") {
-					document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
+				// } else if (selected.textContent == "직녀관") {
+				// 	document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
 				} else if (selected.textContent == "백양관") {
 					document.getElementById('desc').childNodes[1].textContent = "백양관은 여러 시설이 위치하고 있습니다. 1층에는 세탁실이 있으며, 2층에는 입학지원본부와 회의실이 위치해 있습니다. 3층부터 5층까지는 게스트룸으로 사용됩니다. 게스트룸은 TV와 전열기구가 구비되어 있으며, 샤워 시설도 잘 갖추어져 있어 편리하게 이용할 수 있습니다";
 				} else if (selected.textContent == "운동장") {
@@ -64,8 +65,9 @@
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b07.png')"><div class="TabItem">창조관</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b11.png')"><div class="TabItem">예지관</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b04.png')"><div class="TabItem">DDC</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08.jpg')"><div class="TabItem">견우관</div></div>
-				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b09.jpg')"><div class="TabItem">직녀관</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08_09.png')"><div class="TabItem">견우관,직녀관</div></div>
+<!-- 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b08.jpg')"><div class="TabItem">견우관</div></div>
+				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b09.jpg')"><div class="TabItem">직녀관</div></div> -->
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b02.png')"><div class="TabItem">백양관</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b12.jpg')"><div class="TabItem">운동장</div></div>
 				<div class="Tab" style="background: #F0F0F0" onclick="javascript:selectTab(this, '../img/b13.jpg')"><div class="TabItem">노벨공원</div></div>
