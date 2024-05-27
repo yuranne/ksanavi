@@ -29,7 +29,9 @@
 				<div class="Rectangle" id="sel_dept" style="left: 18px; right: 50px; top: 102px; position: absolute; background: #D5E4F2; border-top-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 3; visibility: hidden">
 					<div class="list-item" onclick="javascript:selectLocationByMap(this, 'dept_default', marker_dept)">지도에서 선택</div>
 					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dept_default', marker_dept)" id="dept_curr">현위치</div>
-					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">본관</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">본관로비</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">대강당</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">중강당</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">탐구관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">형설관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dept_default', marker_dept)">창조관</div>
@@ -49,6 +51,9 @@
 				<div class="Rectangle" id="sel_dest" style="left: 18px; right: 50px; top: 139px; position: absolute; background: #D5E4F2; border-top-left-radius: 5px; border-bottom-right-radius: 5px; z-index: 3; visibility: hidden">
 					<div class="list-item" onclick="javascript:selectLocationByMap(this, 'dest_default', marker_dest)">지도에서 선택</div>
 					<div class="list-item" onclick="javascript:selectCurrentLocation(this, 'dest_default', marker_dest)">현위치</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">본관로비</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">대강당</div>
+					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">중강당</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">본관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">탐구관</div>
 					<div class="list-item" onclick="javascript:selectLocationByName(this, 'dest_default', marker_dest)">형설관</div>
@@ -103,15 +108,22 @@
 					운동장: new kakao.maps.LatLng(35.166320330804304, 129.02658301843573),
 					노벨공원: new kakao.maps.LatLng(35.16492834545107, 129.0254867316951),
 					아크로폴리스: new kakao.maps.LatLng(35.165535938644645, 129.02606697116047),
+					본관로비: new kakao.maps.LatLng(35.165941016744846, 129.02595904930277),
+					대강당: new kakao.maps.LatLng(35.16572713488805, 129.0263542999626),
+					중강당: new kakao.maps.LatLng(35.16570052858506, 129.02498186877776),
 					P01: new kakao.maps.LatLng(35.1661075679581, 129.02583423447706),
 					P02: new kakao.maps.LatLng(35.16596095560079, 129.02570988090187),
 					P03: new kakao.maps.LatLng(35.16590498113406, 129.02582372134978),
+					P03_3: new kakao.maps.LatLng(35.16590498113406, 129.02582372134978),
 					P04: new kakao.maps.LatLng(35.16600646192753, 129.02595244239438),
 					P05: new kakao.maps.LatLng(35.16601702171197, 129.02559055546513),
 					P06: new kakao.maps.LatLng(35.166259117460484, 129.02512466853963),
 					P07: new kakao.maps.LatLng(35.16559207584805, 129.02526999439806),
 					P08: new kakao.maps.LatLng(35.16549630437505, 129.0254733842183),
 					P09: new kakao.maps.LatLng(35.165799741962275, 129.0260543118005),
+					P09_2: new kakao.maps.LatLng(35.165799741962275, 129.0260543118005),
+					P09_3: new kakao.maps.LatLng(35.165799741962275, 129.0260543118005),
+					P09_4: new kakao.maps.LatLng(35.165799741962275, 129.0260543118005),
 					P10: new kakao.maps.LatLng(35.16581026402232, 129.0259640358745),
 					P11: new kakao.maps.LatLng(35.16587457886959, 129.02669815871664),
 					P12: new kakao.maps.LatLng(35.165182998809165, 129.0253476413629),
@@ -132,15 +144,30 @@
 					P27: new kakao.maps.LatLng(35.16612306039548, 129.0259855144125),
 					P28: new kakao.maps.LatLng(35.16608622828002, 129.02535907005628),
 					P29: new kakao.maps.LatLng(35.16555398865304, 129.02566137556067),
+					P29_3: new kakao.maps.LatLng(35.16555398865304, 129.02566137556067),
+					P29_4: new kakao.maps.LatLng(35.16555398865304, 129.02566137556067),
 					P30: new kakao.maps.LatLng(35.16528431657341, 129.02615949501902),
 					P31: new kakao.maps.LatLng(35.16549815187686, 129.02576698829986),
 					P32: new kakao.maps.LatLng(35.16545623165415, 129.02557938805532),
+					P32_2: new kakao.maps.LatLng(35.16545623165415, 129.02557938805532),
+					P32_3: new kakao.maps.LatLng(35.16545623165415, 129.02557938805532),
 					P33: new kakao.maps.LatLng(35.16524077067717, 129.0253957142077),
+					P33_2: new kakao.maps.LatLng(35.16524077067717, 129.0253957142077),
 					P34: new kakao.maps.LatLng(35.16513448898117, 129.0260926763992),
+					P34_2: new kakao.maps.LatLng(35.16513448898117, 129.0260926763992),
+					P34_3: new kakao.maps.LatLng(35.16513448898117, 129.0260926763992),
 					P35: new kakao.maps.LatLng(35.16493447152874, 129.02592858973622),
+					P35_2: new kakao.maps.LatLng(35.16493447152874, 129.02592858973622),
 					P36: new kakao.maps.LatLng(35.16538963541468, 129.02552012193289),
 					P37: new kakao.maps.LatLng(35.16556192399303, 129.02518694044838),
+					P37_2: new kakao.maps.LatLng(35.16556192399303, 129.02518694044838),
 					P38: new kakao.maps.LatLng(35.165243233726436, 129.02632583074322),
+					S11: new kakao.maps.LatLng(35.165466569867725, 129.0255000820133),
+					S12: new kakao.maps.LatLng(35.165466569867725, 129.0255000820133),
+					S21: new kakao.maps.LatLng(35.16525988737339, 129.02533034370992),
+					S31: new kakao.maps.LatLng(35.1652173535545, 129.02612216766457),
+					S32: new kakao.maps.LatLng(35.1652173535545, 129.02612216766457),
+					S41: new kakao.maps.LatLng(35.165015313569945, 129.02594431298115),
 				};
 				ksaGraph = {
 					본관: {
@@ -196,6 +223,19 @@
 						P30: getDistance(ksaLatLng['아크로폴리스'], ksaLatLng['P30']),
 						P31: getDistance(ksaLatLng['아크로폴리스'], ksaLatLng['P31']),
 					},
+					본관로비: {
+						P03: getDistance(ksaLatLng['본관로비'], ksaLatLng['P03']),
+						P04: getDistance(ksaLatLng['본관로비'], ksaLatLng['P04']),
+						P09: getDistance(ksaLatLng['본관로비'], ksaLatLng['P09']),
+						P10: getDistance(ksaLatLng['본관로비'], ksaLatLng['P10']),
+						P14: getDistance(ksaLatLng['본관로비'], ksaLatLng['P14']),
+					},
+					대강당: {
+						P09_2: getDistance(ksaLatLng['대강당'], ksaLatLng['P09_2']),
+					},
+					중강당: {
+						P37_2: getDistance(ksaLatLng['중강당'], ksaLatLng['P37_2']),
+					},
 					P01: {
 						P02: getDistance(ksaLatLng['P01'], ksaLatLng['P02']),
 						P04: getDistance(ksaLatLng['P01'], ksaLatLng['P04']),
@@ -210,6 +250,7 @@
 					},
 					P03: {
 						본관: getDistance(ksaLatLng['P03'], ksaLatLng['본관']),
+						본관로비: getDistance(ksaLatLng['P03'], ksaLatLng['본관로비']),
 						P02: getDistance(ksaLatLng['P03'], ksaLatLng['P02']),
 						P04: getDistance(ksaLatLng['P03'], ksaLatLng['P04']),
 						P09: getDistance(ksaLatLng['P03'], ksaLatLng['P09']),
@@ -218,8 +259,14 @@
 						P29: getDistance(ksaLatLng['P03'], ksaLatLng['P29']),
 						P31: getDistance(ksaLatLng['P03'], ksaLatLng['P31']),
 					},
+					P03_3: {
+						P05: getDistance(ksaLatLng['P03_3'], ksaLatLng['P05']),
+						P09_3: getDistance(ksaLatLng['P03_3'], ksaLatLng['P09_3']),
+						P29_3: getDistance(ksaLatLng['P03_3'], ksaLatLng['P29_3']),
+					},
 					P04: {
 						본관: getDistance(ksaLatLng['P04'], ksaLatLng['본관']),
+						본관로비: getDistance(ksaLatLng['P04'], ksaLatLng['본관로비']),
 						P01: getDistance(ksaLatLng['P04'], ksaLatLng['P01']),
 						P02: getDistance(ksaLatLng['P04'], ksaLatLng['P02']),
 						P09: getDistance(ksaLatLng['P04'], ksaLatLng['P09']),
@@ -253,21 +300,37 @@
 						P19: getDistance(ksaLatLng['P08'], ksaLatLng['P19']),
 						P20: getDistance(ksaLatLng['P08'], ksaLatLng['P20']),
 						P32: getDistance(ksaLatLng['P08'], ksaLatLng['P32']),
-						P36: getDistance(ksaLatLng['P08'], ksaLatLng['P36']),
 					},
 					P09: {
 						본관: getDistance(ksaLatLng['P09'], ksaLatLng['본관']),
 						아크로폴리스: getDistance(ksaLatLng['P09'], ksaLatLng['아크로폴리스']),
+						본관로비: getDistance(ksaLatLng['P09'], ksaLatLng['본관로비']),
 						P03: getDistance(ksaLatLng['P09'], ksaLatLng['P03']),
 						P04: getDistance(ksaLatLng['P09'], ksaLatLng['P04']),
 						P10: getDistance(ksaLatLng['P09'], ksaLatLng['P10']),
 						P14: getDistance(ksaLatLng['P09'], ksaLatLng['P14']),
 						P30: getDistance(ksaLatLng['P09'], ksaLatLng['P30']),
 						P31: getDistance(ksaLatLng['P09'], ksaLatLng['P31']),
+						P09_2: 0.01,
+					},
+					P09_2: {
+						P09: 0.01,
+						P09_3: 0.01,
+						대강당: getDistance(ksaLatLng['P09_2'], ksaLatLng['대강당']),
+					},
+					P09_3: {
+						P09_2: 0.01,
+						P09_4: 0.01,
+						P03_3: getDistance(ksaLatLng['P09_3'], ksaLatLng['P03_3']),
+					},
+					P09_4: {
+						P09_3: 0.01,
+						P29_4: getDistance(ksaLatLng['P09_4'], ksaLatLng['P29_4']),
 					},
 					P10: {
 						본관: getDistance(ksaLatLng['P10'], ksaLatLng['본관']),
 						아크로폴리스: getDistance(ksaLatLng['P10'], ksaLatLng['아크로폴리스']),
+						본관로비: getDistance(ksaLatLng['P10'], ksaLatLng['본관로비']),
 						P03: getDistance(ksaLatLng['P10'], ksaLatLng['P03']),
 						P04: getDistance(ksaLatLng['P10'], ksaLatLng['P04']),
 						P09: getDistance(ksaLatLng['P10'], ksaLatLng['P09']),
@@ -304,6 +367,7 @@
 					},
 					P14: {
 						본관: getDistance(ksaLatLng['P14'], ksaLatLng['본관']),
+						본관로비: getDistance(ksaLatLng['P14'], ksaLatLng['본관로비']),
 						P03: getDistance(ksaLatLng['P14'], ksaLatLng['P03']),
 						P04: getDistance(ksaLatLng['P14'], ksaLatLng['P04']),
 						P09: getDistance(ksaLatLng['P14'], ksaLatLng['P09']),
@@ -400,7 +464,14 @@
 						P03: getDistance(ksaLatLng['P29'], ksaLatLng['P03']),
 						P10: getDistance(ksaLatLng['P29'], ksaLatLng['P10']),
 						P31: getDistance(ksaLatLng['P29'], ksaLatLng['P31']),
-						P32: getDistance(ksaLatLng['P29'], ksaLatLng['P32']),
+					},
+					P29_3: {
+						P03_3: getDistance(ksaLatLng['P29_3'], ksaLatLng['P03_3']),
+						P32: getDistance(ksaLatLng['P29_3'], ksaLatLng['P32']),
+					},
+					P29_4: {
+						P09_4: getDistance(ksaLatLng['P29_4'], ksaLatLng['P09_4']),
+						P32_2: getDistance(ksaLatLng['P29_4'], ksaLatLng['P32_2']),
 					},
 					P30: {
 						아크로폴리스: getDistance(ksaLatLng['P30'], ksaLatLng['아크로폴리스']),
@@ -420,46 +491,109 @@
 					P32: {
 						탐구관: getDistance(ksaLatLng['P32'], ksaLatLng['탐구관']),
 						P08: getDistance(ksaLatLng['P32'], ksaLatLng['P08']),
-						P29: getDistance(ksaLatLng['P32'], ksaLatLng['P29']),
+						P29_3: getDistance(ksaLatLng['P32'], ksaLatLng['P29_3']),
 						P34: getDistance(ksaLatLng['P32'], ksaLatLng['P34']),
-						P36: getDistance(ksaLatLng['P32'], ksaLatLng['P36']),
+						S11: getDistance(ksaLatLng['P32'], ksaLatLng['S11']),
+					},
+					P32_2: {
+						P29_4: getDistance(ksaLatLng['P32_2'], ksaLatLng['P29_4']),
+						P33: getDistance(ksaLatLng['P32_2'], ksaLatLng['P33']),
+						P34_2: getDistance(ksaLatLng['P32_2'], ksaLatLng['P34_2']),
+						S11: 0.01,
+						S12: getDistance(ksaLatLng['P32_2'], ksaLatLng['S12']),
+					},
+					P32_3: {
+						P34_3: getDistance(ksaLatLng['P32_3'], ksaLatLng['P34_3']),
+						P36: getDistance(ksaLatLng['P32_3'], ksaLatLng['P36']),
+						S12: 0.01,
 					},
 					P33: {
 						형설관: getDistance(ksaLatLng['P33'], ksaLatLng['형설관']),
 						P12: getDistance(ksaLatLng['P33'], ksaLatLng['P12']),
 						P13: getDistance(ksaLatLng['P33'], ksaLatLng['P13']),
 						P35: getDistance(ksaLatLng['P33'], ksaLatLng['P35']),
-						P36: getDistance(ksaLatLng['P33'], ksaLatLng['P36']),
+						P32_2: getDistance(ksaLatLng['P33'], ksaLatLng['P32_2']),
+						S21: getDistance(ksaLatLng['P33'], ksaLatLng['S21']),
+					},
+					P33_2: {
+						P35_2: getDistance(ksaLatLng['P33_2'], ksaLatLng['P35_2']),
+						P36: getDistance(ksaLatLng['P33_2'], ksaLatLng['P36']),
+						S21: 0.01,
 					},
 					P34: {
 						탐구관: getDistance(ksaLatLng['P34'], ksaLatLng['탐구관']),
 						DDC: getDistance(ksaLatLng['P34'], ksaLatLng['DDC']),
 						P32: getDistance(ksaLatLng['P34'], ksaLatLng['P32']),
-						P35: getDistance(ksaLatLng['P34'], ksaLatLng['P35']),
+						S31: getDistance(ksaLatLng['P34'], ksaLatLng['S31']),
+					},
+					P34_2: {
+						P32_2: getDistance(ksaLatLng['P34_2'], ksaLatLng['P32_2']),
+						P35: getDistance(ksaLatLng['P34_2'], ksaLatLng['P35']),
+						S31: 0.01,
+						S32: getDistance(ksaLatLng['P34_2'], ksaLatLng['S32']),
+					},
+					P34_3: {
+						P32_3: getDistance(ksaLatLng['P34_3'], ksaLatLng['P32_3']),
+						P35_2: getDistance(ksaLatLng['P34_3'], ksaLatLng['P35_2']),
+						S32: 0.01,
 					},
 					P35: {
 						형설관: getDistance(ksaLatLng['P35'], ksaLatLng['형설관']),
 						P12: getDistance(ksaLatLng['P35'], ksaLatLng['P12']),
 						P13: getDistance(ksaLatLng['P35'], ksaLatLng['P13']),
 						P33: getDistance(ksaLatLng['P35'], ksaLatLng['P33']),
-						P34: getDistance(ksaLatLng['P35'], ksaLatLng['P34']),
+						P34_2: getDistance(ksaLatLng['P35'], ksaLatLng['P34_2']),
+						S41: getDistance(ksaLatLng['P35'], ksaLatLng['S41']),
+					},
+					P35_2: {
+						P33_2: getDistance(ksaLatLng['P35_2'], ksaLatLng['P33_2']),
+						P34_3: getDistance(ksaLatLng['P35_2'], ksaLatLng['P34_3']),
+						S41: 0.01,
 					},
 					P36: {
-						P08: getDistance(ksaLatLng['P36'], ksaLatLng['P08']),
-						P32: getDistance(ksaLatLng['P36'], ksaLatLng['P32']),
-						P33: getDistance(ksaLatLng['P36'], ksaLatLng['P33']),
-						P37: getDistance(ksaLatLng['P36'], ksaLatLng['P37']),
+						P32_3: getDistance(ksaLatLng['P36'], ksaLatLng['P32_3']),
+						P33_2: getDistance(ksaLatLng['P36'], ksaLatLng['P33_2']),
+						P37_2: getDistance(ksaLatLng['P36'], ksaLatLng['P37_2']),
 					},
 					P37: {
 						창조관: getDistance(ksaLatLng['P37'], ksaLatLng['창조관']),
 						P07: getDistance(ksaLatLng['P37'], ksaLatLng['P07']),
-						P36: getDistance(ksaLatLng['P37'], ksaLatLng['P36']),
+						P37_2: 0.01,
+					},
+					P37_2: {
+						중강당: getDistance(ksaLatLng['P37_2'], ksaLatLng['중강당']),
+						P36: getDistance(ksaLatLng['P37_2'], ksaLatLng['P36']),
+						P37: 0.01,
 					},
 					P38: {
 						DDC: getDistance(ksaLatLng['P38'], ksaLatLng['DDC']),
 						P22: getDistance(ksaLatLng['P38'], ksaLatLng['P22']),
 						P23: getDistance(ksaLatLng['P38'], ksaLatLng['P23']),
 						P30: getDistance(ksaLatLng['P38'], ksaLatLng['P30']),
+					},
+					S11: {
+						P32: getDistance(ksaLatLng['S11'], ksaLatLng['P32']),
+						P32_2: 0.01,
+					},
+					S12: {
+						P32_2: getDistance(ksaLatLng['S12'], ksaLatLng['P32_2']),
+						P32_3: 0.01,
+					},
+					S21: {
+						P33: getDistance(ksaLatLng['S21'], ksaLatLng['P33']),
+						P33_2: 0.01,
+					},
+					S31: {
+						P34: getDistance(ksaLatLng['S11'], ksaLatLng['P34']),
+						P34_2: 0.01,
+					},
+					S32: {
+						P34_2: getDistance(ksaLatLng['S12'], ksaLatLng['P34_2']),
+						P34_3: 0.01,
+					},
+					S41: {
+						P35: getDistance(ksaLatLng['S41'], ksaLatLng['P35']),
+						P35_2: 0.01,
 					},
 				};
 			}
@@ -609,11 +743,14 @@
 					strokeStyle: 'solid'
 				}); 
 				polylinePath.setMap(map);
-				var distance = Math.round(polylinePath.getLength());
+				// var distance = Math.round(polylinePath.getLength());
+				var distance = 0;
+				for (k in path)
+					if (k < path.length-2)
+						distance += ksaGraph[path[k]][path[parseInt(k)+1]];
+				distance = Math.round(distance*1000);
 				var walkkTime = distance / 1.04 | 0;
 				toast('거리: ' + distance + 'm\n도보: ' + walkkTime + '초', 5000);
-
-				// drawPath(shortestPath('본관', 'DDC'));
 			}
 			
 			function toast(msg, ms){
@@ -692,7 +829,7 @@
 			navigateByParam();
 		</script>
 		<script type="module">
-			import { drawPath, removeline } from '/main.js';
+			import { drawPath } from '/main.js';
 
 			var p;
 			p = {
@@ -918,7 +1055,6 @@
 
 			window.addEventListener("click", (event) => {
 				if (event.target.className == 'ArrowWhite') {
-					removeline();
 					var start = document.getElementById('dept_default').textContent;
 					var finish = document.getElementById('dest_default').textContent;
 					drawPath(shortestPath(start, finish));
