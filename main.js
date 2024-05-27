@@ -61,6 +61,10 @@ export function drawPath(pointsArray) {
 	addRedLineFromPoints(scene, pointsArray);
 }
 
+export function removeline() {
+            scene.remove(line);
+}
+
 function onWindowResize() {
 	camera.aspect = container.clientWidth / container.clientHeight;
 	camera.updateProjectionMatrix();
