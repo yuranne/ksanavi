@@ -2,6 +2,7 @@ import * as THREE from "three";
 
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import {  } from "ko/navigation.html"
 
 let container, camera, scene, renderer;
 
