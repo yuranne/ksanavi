@@ -597,6 +597,9 @@ function findLowestCostNode(costs, processed) {
 	}, null);
 };
 
+initGraph();
+navigateByParam();
+
 var p;
 p = {
 	탐구입구앞: [-7.2, -13.2, 3.5],
