@@ -58,7 +58,7 @@ function addRedLineFromPoints(scene, pointsArray) {
 }
 
 export function drawPath(pointsArray) {
-	scene.traverse(function (object) {
+	/*scene.traverse(function (object) {
                 if (object.name === "line") {
                     scene.remove(object);
 		}
@@ -67,7 +67,7 @@ export function drawPath(pointsArray) {
         });
 	//scene.remove(line);*/
 	addRedLineFromPoints(scene, pointsArray);
-	render();
+	//render();
 }
 
 function onWindowResize() {
