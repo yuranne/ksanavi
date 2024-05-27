@@ -408,12 +408,12 @@ function selectLocation(selected, def_txt) {
 	return def_txt_elm;
 }
 
-function selectLocationByMap(selected, def_txt, mkr) {
+export function selectLocationByMap(selected, def_txt, mkr) {
 	selectLocation(selected, def_txt);
 	marker = mkr;
 }
 
-function selectCurrentLocation(selected, def_txt, mkr) {
+export function selectCurrentLocation(selected, def_txt, mkr) {
 	selectLocation(selected, def_txt);
 
 	navigator.geolocation.getCurrentPosition((pos) => {
@@ -423,7 +423,7 @@ function selectCurrentLocation(selected, def_txt, mkr) {
 	})
 }
 
-function selectLocationByName(selected, def_txt, mkr) {
+export function selectLocationByName(selected, def_txt, mkr) {
 	var def_txt_elm = selectLocation(selected, def_txt);
 	mkr.setPosition(ksaLatLng[def_txt_elm.innerText]);
 }
