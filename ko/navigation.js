@@ -1,4 +1,4 @@
-var ksaLatLng;
+				var ksaLatLng;
 				var ksaGraph;
 				function initGraph() {
 					ksaLatLng = {
@@ -638,7 +638,7 @@ var ksaLatLng;
 					예지DDC2 : new Arrays.asList(14.7, 6.7, 0.5),
 					예지DDC3 : new Arrays.asList(14.7, -6, 3.5)
 				}
-				*/
+				
 				p = {
 					탐구입구앞: [-7.2, -13.2, 3.5],
 					탐구입구 : [-7.2, -13.2, 3.5],
