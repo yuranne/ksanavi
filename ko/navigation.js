@@ -1006,6 +1006,5 @@ function shortestPath(start, finish) {
             return [ p['직녀'], p['견우'] ];
         } }
     return [];
-
-    }
+}
 export { start, finish, shortestPath }
