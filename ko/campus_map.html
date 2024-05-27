@@ -22,23 +22,28 @@
 				document.getElementById('pos_img').src = img_src;
 
 				if (selected.textContent == "본관") {
-					document.getElementById('desc').childNodes[1].textContent = "학교에 들어오면 가장 먼저 볼 수 있는 건물로, 한국과학영재학교의 중심입니다. 1층에는 학생들이 삼시세끼를 먹는 급식실, 그리고 교장실이 있습니다. 본관 2층에는 여러 행사를 진행하고 체육 수업을 하는 대강당이 있습니다. 또한 대강당 안에는 학생들이 헬스를 하는 체력단련실이 있습니다. 본관 3층에는 학생들이 다양한 모임을 하거나 조별과제를 할 수 있는 세미나실들이 있습니다. 그리고 그 옆에는 약 7만권의 서적을 보유한 도서관이 있습니다. 또한 본관 3층에는 남자 기숙사 견우관과 연결되는 구름다리가 있습니다.";
+					document.getElementById('desc').childNodes[1].textContent = "본관은 학교에 들어서면 가장 먼저 마주하게 되는 건물로, 한국과학영재학교의 중심 역할을 합니다. 1층에는 학생들의 급식실과 교장실이 위치해 있으며, 2층에는 다양한 행사가 열리고 체육 수업이 진행되는 대강당과 체력단련실이 있습니다. 3층에는 세미나실과 약 7만 권의 서적을 보유한 도서관이 있으며, 남자 기숙사인 견우관과 연결되는 구름다리가 설치되어 있습니다.
+";
 				} else if (selected.textContent == "탐구관") {
-					document.getElementById('desc').childNodes[1].textContent = "탐구관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "탐구관은 본관 3층과 연결된 긴 건물로, 학생들의 학습 활동에 주로 사용됩니다. 여러 실험실과 강의실, 학부 사무실로 구성되어 있으며, 1층에는 화학생물학부 사무실, 3층에는 물리지구과학부 사무실이 위치해 있습니다. 또한, 탐구관 끝 부분에는 영어 선생님들의 사무실과 영어 수업 교실이 마련되어 있습니다.
+";
 				} else if (selected.textContent == "형설관") {
-					document.getElementById('desc').childNodes[1].textContent = "형설관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "형설관은 탐구관과 양 끝이 닿아있는 건물로, 탐구관과 마찬가지로 학생들의 학습을 위한 공간입니다. 학교의 경사로 인해 탐구관과 층수가 다르게 연결되어 있으며, 형설관 1층에는 인문예술학부 사무실, 보건실, 상담실이, 5층에는 수리정보과학부 사무실이 위치해 있습니다. 대부분의 방은 강의실로 사용되며, 2층에는 인문 수업을 위한 여러 스크린이 설치된 강의실들이 있습니다.
+";
 				} else if (selected.textContent == "창조관") {
-					document.getElementById('desc').childNodes[1].textContent = "창조관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "창조관은 8층까지 있으며, 그 위에 천문대가 위치해 있는 학교에서 가장 높은 건물입니다. 주로 교사들의 사무실과 실험실, 자습실로 구성되어 있습니다. 1층에는 학생들이 자유롭게 이용할 수 있는 창조카페가, 2층에는 여러 강연과 프로그램이 진행되는 중강당이 위치해 있습니다. 3층에는 탐구관 3층과 연결되는 구름다리, 역사관, 3학년 자습실이 있습니다. 4층부터 7층까지는 다양한 분야의 실험실과 사무실이 있으며, 8층에는 하늘정원과 2학년 자습실이 있습니다. 9층에는 슬라이딩돔과 원형돔이 있는 천문대가 설치되어 있습니다.
+";
 				} else if (selected.textContent == "예지관") {
-					document.getElementById('desc').childNodes[1].textContent = "예지관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "본관 왼쪽에 위치한 예지관은 학생들의 휴식과 여가생활을 위한 공간입니다. 1층에는 방문객들을 위한 과학 체험 교실이 있으며, 3층에는 KSA 오케스트라 연습실, 음악실, 악기실이 있습니다. 4층에는 미술 수업이 진행되는 미술실, 5층에는 동아리실과 학생들이 자주 이용하는 노래방, 당구장이 위치해 있습니다. 마지막으로 6층에는 농구, 배구, 배드민턴 등 다양한 운동을 할 수 있는 체육관이 마련되어 있습니다.
+";
 				} else if (selected.textContent == "DDC") {
 					document.getElementById('desc').childNodes[1].textContent = "한국과학기술원(KAIST)부설 한국과학영재학교(KSA)에 있는 창조적 디자인과 상상의 중심입니다. 드림 디자인센터(DDC)는 편안한 분위기에서 다양한 3D 장비를 이용하여 초기 아이디어에서부터 각자 고유의 시제품을 만들 수 있도록 영감을 자극하여 그들의 꿈을 펼칠 수 있는 곳입니다. 다양한 시제품 제작과 공작에 필요한 다양한 도구들을 구비함으로써 학생들이 초기 형태의 밑그림에서 완벽한 최종 산물이 만들어질 수 있도록 완벽한 제작과정을 제공합니다.";
 				} else if (selected.textContent == "견우관") {
-					document.getElementById('desc').childNodes[1].textContent = "견우관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "견우관과 직녀관은 각각 남학생과 여학생을 위한 기숙사로, 두 건물은 오작교로 연결되어 있습니다. 견우관은 5층, 직녀관은 4층까지 있으며, 학생들이 학기 중에 생활하는 방이 마련되어 있습니다. 또한, 학생들이 자유롭게 이용할 수 있는 휴게실과 와이파이가 제공되는 자습실도 갖추고 있습니다.";
 				} else if (selected.textContent == "직녀관") {
 					document.getElementById('desc').childNodes[1].textContent = "직녀관 설명";
 				} else if (selected.textContent == "백양관") {
-					document.getElementById('desc').childNodes[1].textContent = "백양관 설명";
+					document.getElementById('desc').childNodes[1].textContent = "백양관은 여러 시설이 위치하고 있습니다. 1층에는 세탁실이 있으며, 2층에는 입학지원본부와 회의실이 위치해 있습니다. 3층부터 5층까지는 게스트룸으로 사용됩니다. 게스트룸은 TV와 전열기구가 구비되어 있으며, 샤워 시설도 잘 갖추어져 있어 편리하게 이용할 수 있습니다";
 				} else if (selected.textContent == "운동장") {
 					document.getElementById('desc').childNodes[1].textContent = "운동장 설명";
 				} else if (selected.textContent == "노벨공원") {
