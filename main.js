@@ -62,7 +62,9 @@ export function drawPath(pointsArray) {
 }
 
 export function removeline() {
-            scene.remove(line);
+            scene.traverse(function (object) {
+                if (object.name === "line") {
+                    scene.remove(object);
 }
 
 function onWindowResize() {
