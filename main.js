@@ -62,6 +62,8 @@ export function drawPath(pointsArray) {
                 if (object.name === "line") {
                     scene.remove(object);
 		}
+		object.geometry.dispose();
+                object.material.dispose();
         });
 	//scene.remove(line);*/
 	addRedLineFromPoints(scene, pointsArray);
