@@ -829,7 +829,7 @@
 			navigateByParam();
 		</script>
 		<script type="module">
-			import { drawPath, removeline } from '/main.js';
+			import { drawPath } from '/main.js';
 
 			var p;
 			p = {
@@ -1055,7 +1055,6 @@
 
 			window.addEventListener("click", (event) => {
 				if (event.target.className == 'ArrowWhite') {
-					removeline();
 					var start = document.getElementById('dept_default').textContent;
 					var finish = document.getElementById('dest_default').textContent;
 					drawPath(shortestPath(start, finish));
