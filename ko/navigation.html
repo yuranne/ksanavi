@@ -608,6 +608,7 @@
 			var polylinePath;
 			var gotCurrPos;
 
+			var marker_stairs = [];
 			var marker;
 			var marker_curr = new kakao.maps.Marker();
 			var marker_dept = new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/marker_dept.png", new kakao.maps.Size(50, 45), { offset: new kakao.maps.Point(15, 43) }) });
@@ -617,7 +618,6 @@
 
 			function markCurrentLocation(pos) {
 				marker_curr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-				// marker_curr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 				marker_curr.setMap(map);
 			}
 
@@ -642,7 +642,6 @@
 
 				navigator.geolocation.getCurrentPosition((pos) => {
 					mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-					// mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 					gotCurrPos = true;
 				})
 			}
@@ -722,6 +721,9 @@
 
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
+				for (p of marker_stairs)
+					if (p != undefined)
+						p.setMap(null);
 
 				const dept_near = findNearest(marker_dept.getPosition());
 				const dest_near = findNearest(marker_dest.getPosition());
@@ -745,6 +747,15 @@
 					strokeStyle: 'solid'
 				}); 
 				polylinePath.setMap(map);
+
+				for (p of path) {
+					if (['P09_2', 'P09_3', 'P09_4', 'P37_2', 'S11', 'S12', 'S21', 'S31', 'S32', 'S41'].includes(p)) {
+						marker_stairs.push(new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/stairs.png", new kakao.maps.Size(21, 24), { offset: new kakao.maps.Point(10, 12) }) }));
+						marker_stairs.at(-1).setPosition(ksaLatLng[p]);
+						marker_stairs.at(-1).setMap(map);
+					}
+				}
+
 				const distance = Math.round(shortest.distance*1000);
 				const walkkTime = distance / 1.04 | 0;
 				toast('거리: ' + distance + 'm\n도보: ' + walkkTime + '초', 5000);
