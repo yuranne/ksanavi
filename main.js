@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-let container, camera, scene, renderer;
+let container, camera, scene, renderer, line;
 
 init();
 render();
@@ -24,11 +24,10 @@ function init() {
 	const dirLight = new THREE.DirectionalLight(0xefefff, 1.5);
 	dirLight.position.set(10, 10, 10);
 	scene.add(dirLight);
-
 	
 	const loader = new GLTFLoader();
 	loader.load("../map.glb", function (gltf) {
-		//gltf.scene.rotation.y = Math.PI / 2;
+		scene.rotation.y = -0.6
 		scene.add(gltf.scene);
 		render();
 	});
@@ -48,26 +47,19 @@ function init() {
 }
 
 function addRedLineFromPoints(scene, pointsArray) {
-	const material = new THREE.LineBasicMaterial({ color: 0xff0000 }); // 붉은색
+	const material = new THREE.LineBasicMaterial({ color: 0xff0000, linewidth: 3 }); // 붉은색
 	const points = pointsArray.map(point => new THREE.Vector3(...point));
 
 	const geometry = new THREE.BufferGeometry().setFromPoints(points);
-	const line = new THREE.Line(geometry, material);
+	line = new THREE.Line(geometry, material);
 	line.rotation.x = Math.PI / 2 * 3;
 	scene.add(line);
 }
 
 export function drawPath(pointsArray) {
-	scene.traverse(function (object) {
-                if (object.name === "line") {
-                	scene.remove(object);
-			object.geometry.dispose();
-              		object.material.dispose();
-		}
-        });
-	//scene.remove(line);
+	scene.remove(line);
 	addRedLineFromPoints(scene, pointsArray);
-	//render();
+	render();
 }
 
 function onWindowResize() {
