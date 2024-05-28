@@ -607,20 +607,20 @@
 			var geocoder = new kakao.maps.services.Geocoder();
 			var polylinePath;
 			var gotCurrPos;
-			
+
 			var marker;
 			var marker_curr = new kakao.maps.Marker();
 			var marker_dept = new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/marker_dept.png", new kakao.maps.Size(50, 45), { offset: new kakao.maps.Point(15, 43) }) });
 			var marker_dest = new kakao.maps.Marker({ image: new kakao.maps.MarkerImage("../img/marker_dest.png", new kakao.maps.Size(50, 45), { offset: new kakao.maps.Point(15, 43) }) });
 			marker_dept.setMap(map);
 			marker_dest.setMap(map);
-			
+
 			function markCurrentLocation(pos) {
 				marker_curr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
 				// marker_curr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 				marker_curr.setMap(map);
 			}
-			
+
 			function selectLocation(selected, def_txt) {
 				var def_txt_elm = document.getElementById(def_txt);
 				def_txt_elm.innerText = selected.textContent;
@@ -628,30 +628,30 @@
 				selected.parentElement.style.visibility = 'hidden';
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
-			
+
 				return def_txt_elm;
 			}
-			
+
 			function selectLocationByMap(selected, def_txt, mkr) {
 				selectLocation(selected, def_txt);
 				marker = mkr;
 			}
-			
+
 			function selectCurrentLocation(selected, def_txt, mkr) {
 				selectLocation(selected, def_txt);
-			
+
 				navigator.geolocation.getCurrentPosition((pos) => {
 					mkr.setPosition(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
 					// mkr.setPosition(new kakao.maps.LatLng(35.16627747999284, 129.02591252605987));
 					gotCurrPos = true;
 				})
 			}
-			
+
 			function selectLocationByName(selected, def_txt, mkr) {
 				var def_txt_elm = selectLocation(selected, def_txt);
 				mkr.setPosition(ksaLatLng[def_txt_elm.innerText]);
 			}
-			
+
 			kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 				if (marker != undefined) {
 					marker.setPosition(mouseEvent.latLng);
@@ -667,14 +667,14 @@
 					});
 				}
 			});
-			
+
 			function exchangeDeptDest() {
 				var dept_txt_elm = document.getElementById('dept_default');
 				var dest_txt_elm = document.getElementById('dest_default');
-			
+
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
-			
+
 				if (dept_txt_elm.className == 'SelectedText' && dest_txt_elm.className == 'SelectedText') {
 					var tmp = dept_txt_elm.innerText;
 					dept_txt_elm.innerText = dest_txt_elm.innerText;
@@ -686,7 +686,7 @@
 					toast('출발지와 목적지를 모두 설정해 주세요!', 1500);
 				}
 			}
-			
+
 			function getDistance(pos1, pos2) {
 				const lat1 = pos1.getLat();
 				const lng1 = pos1.getLng();
@@ -703,7 +703,7 @@
 				var d = R * c;
 				return d; 
 			}
-			
+
 			function findNearest(pos) {
 				var min = Infinity;
 				var nearest, tmp;
@@ -716,26 +716,27 @@
 				}
 				return nearest;
 			}
-			
+
 			function navigate() {
 				initGraph();
-			
+
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
-			
+
 				const dept_near = findNearest(marker_dept.getPosition());
 				const dest_near = findNearest(marker_dest.getPosition());
-			
+
 				ksaLatLng['dept'] = marker_dept.getPosition();
 				ksaLatLng['dest'] = marker_dest.getPosition();
 				ksaGraph['dept'] = { [dept_near]: getDistance(marker_dept.getPosition(), ksaLatLng[dept_near]) };
 				ksaGraph[dest_near] = { dest: getDistance(marker_dest.getPosition(), ksaLatLng[dest_near]) };
 				ksaGraph['dest'] = {};
-			
-				const path = dijkstra(ksaGraph).path;
+
+				const shortest = dijkstra(ksaGraph);
+				const path = shortest.path;
 				path.unshift('dept');
 				// console.log(path);
-			
+
 				polylinePath = new kakao.maps.Polyline({
 					path: path.map((k) => ksaLatLng[k]),
 					strokeWeight: 5,
@@ -744,16 +745,11 @@
 					strokeStyle: 'solid'
 				}); 
 				polylinePath.setMap(map);
-				// var distance = Math.round(polylinePath.getLength());
-				var distance = 0;
-				for (k in path)
-					if (k < path.length-2)
-						distance += ksaGraph[path[k]][path[parseInt(k)+1]];
-				distance = Math.round(distance*1000);
-				var walkkTime = distance / 1.04 | 0;
+				const distance = Math.round(shortest.distance*1000);
+				const walkkTime = distance / 1.04 | 0;
 				toast('거리: ' + distance + 'm\n도보: ' + walkkTime + '초', 5000);
 			}
-			
+
 			function toast(msg, ms){
 				var toastMessage = document.getElementById('toast_message');
 				toastMessage.innerText = msg;
@@ -762,7 +758,7 @@
 					toastMessage.classList.remove('active');
 				}, ms);
 			}
-			
+
 			function navigateByParam() {
 				var dest = new URL(location.href).searchParams.get('dest');
 				if (dest) {
@@ -782,14 +778,14 @@
 					checkFlag();
 				}
 			}
-			
+
 			function dijkstra(graph) {
 				const costs = Object.assign({ dest: Infinity }, graph.dept);
 				const parents = { dest: null };
 				const processed = [];
-			
+
 				let node = findLowestCostNode(costs, processed);
-			
+
 				while (node) {
 					let cost = costs[node];
 					let children = graph[node];
@@ -803,7 +799,7 @@
 					processed.push(node);
 					node = findLowestCostNode(costs, processed);
 				}
-			
+
 				let optimalPath = ['dest'];
 				let parent = parents.dest;
 				while (parent) {
@@ -811,10 +807,10 @@
 					parent = parents[parent];
 				}
 				optimalPath.reverse();
-			
+
 				return { distance: costs.dest, path: optimalPath };
 			};
-			
+
 			function findLowestCostNode(costs, processed) {
 				return Object.keys(costs).reduce((lowest, node) => {
 					if (lowest === null || costs[node] < costs[lowest]) {
@@ -825,7 +821,7 @@
 					return lowest;
 				}, null);
 			};
-			
+
 			initGraph();
 			navigateByParam();
 		</script>
@@ -873,7 +869,7 @@
 				예지DDC2 : [14.7, 6.7, 0.5],
 				예지DDC3 : [14.7, -6, 3.5]
 			}
-			
+
 			function shortestPath(start, finish) {
 			    if (start === "본관" || start === "본관로비" || start === "대강당") {
 			        if (finish === "탐구관") {
