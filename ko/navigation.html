@@ -633,6 +633,9 @@
 				selected.parentElement.style.visibility = 'hidden';
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
+				for (p of marker_stairs)
+					if (p != undefined)
+						p.setMap(null);
 
 				return def_txt_elm;
 			}
@@ -678,6 +681,9 @@
 
 				if (polylinePath != undefined)
 					polylinePath.setMap(null);
+				for (p of marker_stairs)
+					if (p != undefined)
+						p.setMap(null);
 
 				if (dept_txt_elm.className == 'SelectedText' && dest_txt_elm.className == 'SelectedText') {
 					var tmp = dept_txt_elm.innerText;
