@@ -75,7 +75,11 @@
 			}
 
 			function navigate(elm) {
-				location.href = "navigation.html?dest=" + elm.lastElementChild.innerText.replace(/ .*/,'');
+				location.href = "navigation.html?dest=" + elm.lastElementChild.lastElementChild.innerText.replace(/ .*/,'');
+			}
+
+			function navigate2(txt) {
+				location.href = "navigation.html?dest=" + txt;
 			}
 
 			function getCookie(name) {
@@ -200,7 +204,7 @@
 						<h3>주제탐구활동</h3>
 						<div class="details">
 							<span>13:00~16:00</span>
-							<span>형설관·탐구관</span>
+							<span><div onclick="javascript:navigate2(this.innerText)">형설관</div>·<div onclick="javascript:navigate2(this.innerText)">탐구관</div></span>
 						</div>
 					</div>
 					<div class="slot" id="B04">
