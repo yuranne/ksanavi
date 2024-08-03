@@ -1,16 +1,3 @@
 <script>
-	function getCookie(name) {
-		let matches = document.cookie.match(new RegExp(
-			"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-		));
-		return matches ? decodeURIComponent(matches[1]) : undefined;
-	}
-	lang = getCookie("lang");
-
-	if (lang == "ko")
-		location.href = "./ko/home.html";
-	else if (lang == "en")
-		location.href = "./en/home.html";
-	else
-		location.href = "./language.html";
+	location.href = "./ko/home.html";
 </script>
