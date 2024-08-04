@@ -42,27 +42,28 @@
 			.slot:nth-of-type(2) { grid-column: 1 / 2; grid-row: 7 / 8; }
 			.slot:nth-of-type(3) { grid-column: 1 / 2; grid-row: 8 / 9; }
 			.slot:nth-of-type(4) { grid-column: 1 / 2; grid-row: 9 / 12; }
-			.slot:nth-of-type(5) { grid-column: 1 / 2; grid-row: 10 / 12; }
+			.slot:nth-of-type(5) { grid-column: 1 / 2; grid-row: 9 / 12; }
 			.slot:nth-of-type(6) { grid-column: 1 / 2; grid-row: 14 / 16; }
 
-			.slot:nth-child(7), .slot:nth-child(8), .slot:nth-child(9), .slot:nth-child(10), .slot:nth-child(11) { background: var(--green-slot-bg); }
-			.slot:nth-child(7) h3, .slot:nth-child(8) h3, .slot:nth-child(9) h3, .slot:nth-child(10) h3, .slot:nth-child(11) h3 { color: var(--green-slot-text); }
+			.slot:nth-child(7), .slot:nth-child(8), .slot:nth-child(9), .slot:nth-child(10), .slot:nth-child(11), .slot:nth-child(12) { background: var(--green-slot-bg); }
+			.slot:nth-child(7) h3, .slot:nth-child(8) h3, .slot:nth-child(9) h3, .slot:nth-child(10) h3, .slot:nth-child(11) h3, .slot:nth-child(12) h3 { color: var(--green-slot-text); }
 			.slot:nth-of-type(7) { grid-column: 2 / 3; grid-row: 3 / 5; }
-			.slot:nth-of-type(8) { grid-column: 2 / 3; grid-row: 4 / 5; }
-			.slot:nth-of-type(9) { grid-column: 2 / 3; grid-row: 7 / 10; }
-			.slot:nth-of-type(10) { grid-column: 2 / 3; grid-row: 10 / 12; }
-			.slot:nth-of-type(11) { grid-column: 2 / 3; grid-row: 14 / 16; }
+			.slot:nth-of-type(8) { grid-column: 2 / 3; grid-row: 3 / 4; }
+			.slot:nth-of-type(9) { grid-column: 2 / 3; grid-row: 4 / 5; }
+			.slot:nth-of-type(10) { grid-column: 2 / 3; grid-row: 7 / 10; }
+			.slot:nth-of-type(11) { grid-column: 2 / 3; grid-row: 10 / 12; }
+			.slot:nth-of-type(12) { grid-column: 2 / 3; grid-row: 14 / 16; }
 
-			.slot:nth-of-type(12), .slot:nth-of-type(13) { background: var(--yellow-slot-bg); }
-			.slot:nth-of-type(12) h3, .slot:nth-of-type(13) h3 { color: var(--yellow-slot-text); }
-			.slot:nth-of-type(12) { grid-column: 3 / 4; grid-row: 3 / 4; }
-			.slot:nth-of-type(13) { grid-column: 3 / 4; grid-row: 4 / 6; }
+			.slot:nth-of-type(13), .slot:nth-of-type(14) { background: var(--yellow-slot-bg); }
+			.slot:nth-of-type(13) h3, .slot:nth-of-type(14) h3 { color: var(--yellow-slot-text); }
+			.slot:nth-of-type(13) { grid-column: 3 / 4; grid-row: 3 / 4; }
+			.slot:nth-of-type(14) { grid-column: 3 / 4; grid-row: 4 / 6; }
 
 			.break { background: rgba(83, 83, 83, 0.21); align-items: center; font-size: 2rem; color: rgba(38, 38, 38); letter-spacing: 1.3px; font-weight: bold; padding: 0; display: flex; flex-direction: column; }
-			.break:nth-of-type(14) { grid-column: 2 / -1; grid-row: 1 / 3; }
-			.break:nth-of-type(15) { grid-column: 1 / 2; grid-row: 6 / 7; }
-			.break:nth-of-type(16) { grid-column: 2 / 3; grid-row: 5 / 7; }
-			.break:nth-of-type(17) { grid-column: 1 / -1; grid-row: 12 / 14; }
+			.break:nth-of-type(15) { grid-column: 2 / -1; grid-row: 1 / 3; }
+			.break:nth-of-type(16) { grid-column: 1 / 2; grid-row: 6 / 7; }
+			.break:nth-of-type(17) { grid-column: 2 / 3; grid-row: 5 / 7; }
+			.break:nth-of-type(18) { grid-column: 1 / -1; grid-row: 12 / 14; }
 
 			.time:nth-of-type(2), .time:nth-of-type(3), .time:nth-of-type(7), .time:nth-of-type(8), .time:nth-of-type(13), .time:nth-of-type(14) { background: rgba(255, 110, 5, 0.5); }
 		</style>
@@ -176,8 +177,8 @@
 					<div class="slot" id="A05" name="forOnlyT" onclick="javascript:navigate(this)">
 						<h3>과학에세이</h3>
 						<div class="details">
-							<span>16:50~18:00</span>
-							<span>예지관</span>
+							<span>15:30~18:00</span>
+							<span>형설관</span>
 						</div>
 					</div>
 					<div class="slot" id="A06" onclick="javascript:navigate(this)">
@@ -194,27 +195,35 @@
 							<span>대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="B02" name="forOnlyT">
-						<h3>과학에세이</h3>
+					<div class="slot" id="B02" name="forOnlyT" onclick="javascript:navigate(this)">
+						<h3>포스터 발표 참관</h3>
 						<div class="details">
-							<span>10:00~11:00</span>
+							<span>09:00~10:00</span>
+							<span>대강당</span>
 						</div>
 					</div>
-					<div class="slot" id="B03">
+					<div class="slot" id="B03" name="forOnlyT" onclick="javascript:navigate(this)">
+						<h3>에세이토론</h3>
+						<div class="details">
+							<span>10:00~11:00</span>
+							<span>형설관</span>
+						</div>
+					</div>
+					<div class="slot" id="B04">
 						<h3>주제탐구활동</h3>
 						<div class="details">
 							<span>13:00~16:00</span>
 							<span><div onclick="javascript:navigate2(this.innerText)">형설관</div>·<div onclick="javascript:navigate2(this.innerText)">탐구관</div></span>
 						</div>
 					</div>
-					<div class="slot" id="B04">
+					<div class="slot" id="B05">
 						<h3>학교 소개 및 투어</h3>
 						<div class="details">
 							<span>16:00~18:00</span>
 							<span>대강당, 도서관, 천문대, 창조관 실험실, 역사관, 창조카페, 노벨공원, DDC</span>
 						</div>
 					</div>
-					<div class="slot" id="B05">
+					<div class="slot" id="B06">
 						<h3>환송의 밤</h3>
 						<div class="details">
 							<span>20:00~21:30</span>
