@@ -24,7 +24,7 @@
 			.stage { padding: 2rem 1rem; margin-top: 20px; }
 			.stage, .time { background: var(--stage-time-bg); border-radius: 1rem; }
 			.details { display: flex; flex-direction: column; }
-			.button { width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 1rem; }
+			.button { width: 160px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 1rem; }
 
 			.slot { flex-direction: column; padding: 1rem; margin-top: 6px; }
 			[class^="slot"] { padding-left: 1rem; }
@@ -96,9 +96,8 @@
 				- 기억하고 싶은 세션을 선택하시면 자동저장되어 시간표에서 주황색으로 하이라이트 표시됩니다.
 			</div>
 			<div style="top: 280px; position: absolute; display: flex">
-				<div style="display: flex; align-items: center"><h2>과학 에세이:&nbsp;&nbsp;</h2></div>
-				<div class="button" id="forOnlyS" onclick="javascript:document.cookie = 'st=S; expires=Fri, 31 Dec 9999 23:59:59 GMT'; setDisplay('forOnlyS', 'forOnlyT')"><h2>미참여</h2></div><div style="width: 5px"></div>
-				<div class="button" id="forOnlyT" onclick="javascript:document.cookie = 'st=T; expires=Fri, 31 Dec 9999 23:59:59 GMT'; javascript:setDisplay('forOnlyT', 'forOnlyS')"><h2>참여</h2></div>
+				<div class="button" id="forOnlyS" onclick="javascript:document.cookie = 'st=S; expires=Fri, 31 Dec 9999 23:59:59 GMT'; setDisplay('forOnlyS', 'forOnlyT')"><h2>연구발표</h2></div><div style="width: 5px"></div>
+				<div class="button" id="forOnlyT" onclick="javascript:document.cookie = 'st=T; expires=Fri, 31 Dec 9999 23:59:59 GMT'; javascript:setDisplay('forOnlyT', 'forOnlyS')"><h2>과학에세이</h2></div>
 			</div>
 			<div class="main-container" style="top: 330px; position: absolute">
 				<div class="stages">
